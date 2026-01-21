@@ -1,5 +1,8 @@
 # Soluzioni Tecniche - Modulo CloudStorage
 
+## Documentazione collegata
+- [README](README.md)
+
 ## Problemi Identificati e Soluzioni
 
 ### 1. Gestione Upload File (`Modules/CloudStorage/Actions/UploadFileAction.php`)

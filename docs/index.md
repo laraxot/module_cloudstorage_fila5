@@ -96,6 +96,9 @@ $cloudStorageService->delete($file->path);
 4. **Backup Strategy**: Regular backup of critical files
 5. **Monitoring**: Monitor storage usage and costs
 
+## Documentazione collegata
+- [README](README.md)
+
 ## Related Modules
 - [Media Module](../Media/docs/README.md) - Media file handling
 - [Xot Module](../Xot/docs/index.md) - Core base classes

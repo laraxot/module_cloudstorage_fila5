@@ -193,6 +193,9 @@ CloudStorage/
 3. Add security and encryption features
 4. Develop performance monitoring
 
+## Documentazione collegata
+- [README](README.md)
+
 ---
 
 **Last Updated**: 2026-01-02  
