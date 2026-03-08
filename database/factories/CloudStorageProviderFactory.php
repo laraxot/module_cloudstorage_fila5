@@ -29,49 +29,49 @@ class CloudStorageProviderFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->randomElement(['Google Drive', 'Dropbox', 'AWS S3', 'Azure Blob', 'Local Storage']),
-            'provider_key' => $this->faker->randomElement(['google_drive', 'dropbox', 'aws_s3', 'azure_blob', 'local']),
-            'api_key' => $this->faker->sha1(),
-            'api_secret' => $this->faker->sha1(),
-            'access_token' => $this->faker->sha1(),
-            'refresh_token' => $this->faker->optional()->sha1(),
-            'bucket_name' => $this->faker->optional()->word(),
-            'region' => $this->faker->optional()->randomElement(['us-east-1', 'eu-west-1', 'ap-southeast-1']),
-            'endpoint' => $this->faker->optional()->url(),
-            'is_active' => $this->faker->boolean(80),
-            'is_default' => $this->faker->boolean(20),
-            'priority' => $this->faker->numberBetween(1, 10),
-            'max_file_size' => $this->faker->numberBetween(104857600, 107374182400), // 100MB to 100GB
-            'max_storage_size' => $this->faker->numberBetween(107374182400, 1099511627776), // 100GB to 1TB
-            'used_storage_size' => $this->faker->numberBetween(0, 107374182400), // 0 to 100GB
-            'file_count' => $this->faker->numberBetween(0, 100000),
-            'folder_count' => $this->faker->numberBetween(0, 10000),
-            'status' => $this->faker->randomElement(['active', 'inactive', 'maintenance', 'error']),
-            'last_sync_at' => $this->faker->optional()->dateTimeBetween('-1 month', 'now'),
-            'last_error_at' => $this->faker->optional()->dateTimeBetween('-1 month', 'now'),
-            'error_message' => $this->faker->optional()->sentence(),
-            'retry_count' => $this->faker->numberBetween(0, 10),
-            'max_retries' => $this->faker->numberBetween(3, 10),
+            'name' => // @var mixed faker->randomElement(['Google Drive', 'Dropbox', 'AWS S3', 'Azure Blob', 'Local Storage']
+            'provider_key' => // @var mixed faker->randomElement(['google_drive', 'dropbox', 'aws_s3', 'azure_blob', 'local']
+            'api_key' => // @var mixed faker->sha1(
+            'api_secret' => // @var mixed faker->sha1(
+            'access_token' => // @var mixed faker->sha1(
+            'refresh_token' => // @var mixed faker->optional(
+            'bucket_name' => // @var mixed faker->optional(
+            'region' => // @var mixed faker->optional(
+            'endpoint' => // @var mixed faker->optional(
+            'is_active' => // @var mixed faker->boolean(80
+            'is_default' => // @var mixed faker->boolean(20
+            'priority' => // @var mixed faker->numberBetween(1, 10
+            'max_file_size' => // @var mixed faker->numberBetween(104857600, 107374182400
+            'max_storage_size' => // @var mixed faker->numberBetween(107374182400, 1099511627776
+            'used_storage_size' => // @var mixed faker->numberBetween(0, 107374182400
+            'file_count' => // @var mixed faker->numberBetween(0, 100000
+            'folder_count' => // @var mixed faker->numberBetween(0, 10000
+            'status' => // @var mixed faker->randomElement(['active', 'inactive', 'maintenance', 'error']
+            'last_sync_at' => // @var mixed faker->optional(
+            'last_error_at' => // @var mixed faker->optional(
+            'error_message' => // @var mixed faker->optional(
+            'retry_count' => // @var mixed faker->numberBetween(0, 10
+            'max_retries' => // @var mixed faker->numberBetween(3, 10
             'settings' => [
-                'encryption_enabled' => $this->faker->boolean(60),
-                'compression_enabled' => $this->faker->boolean(40),
-                'cdn_enabled' => $this->faker->boolean(70),
-                'versioning_enabled' => $this->faker->boolean(50),
-                'lifecycle_policy' => $this->faker->optional()->randomElement(['standard', 'intelligent_tiering', 'glacier']),
-                'sync_interval' => $this->faker->randomElement(['realtime', 'hourly', 'daily', 'weekly']),
-                'backup_enabled' => $this->faker->boolean(80),
-                'virus_scan_enabled' => $this->faker->boolean(90),
-                'watermark_enabled' => $this->faker->boolean(30),
-                'thumbnail_enabled' => $this->faker->boolean(85),
+                'encryption_enabled' => // @var mixed faker->boolean(60
+                'compression_enabled' => // @var mixed faker->boolean(40
+                'cdn_enabled' => // @var mixed faker->boolean(70
+                'versioning_enabled' => // @var mixed faker->boolean(50
+                'lifecycle_policy' => // @var mixed faker->optional(
+                'sync_interval' => // @var mixed faker->randomElement(['realtime', 'hourly', 'daily', 'weekly']
+                'backup_enabled' => // @var mixed faker->boolean(80
+                'virus_scan_enabled' => // @var mixed faker->boolean(90
+                'watermark_enabled' => // @var mixed faker->boolean(30
+                'thumbnail_enabled' => // @var mixed faker->boolean(85
             ],
             'metadata' => [
-                'provider_type' => $this->faker->randomElement(['cloud', 'local', 'hybrid']),
-                'supported_formats' => $this->faker->randomElements(['pdf', 'doc', 'jpg', 'png', 'mp4', 'zip'], $this->faker->numberBetween(3, 6)),
-                'features' => $this->faker->randomElements(['encryption', 'compression', 'cdn', 'versioning', 'backup'], $this->faker->numberBetween(2, 5)),
-                'pricing_tier' => $this->faker->randomElement(['free', 'basic', 'premium', 'enterprise']),
-                'support_level' => $this->faker->randomElement(['basic', 'standard', 'premium', 'dedicated']),
-                'uptime_percentage' => $this->faker->randomFloat(2, 95, 99.99),
-                'response_time_ms' => $this->faker->numberBetween(10, 500),
+                'provider_type' => // @var mixed faker->randomElement(['cloud', 'local', 'hybrid']
+                'supported_formats' => // @var mixed faker->randomElements(['pdf', 'doc', 'jpg', 'png', 'mp4', 'zip'], $this->faker->numberBetween(3, 6
+                'features' => // @var mixed faker->randomElements(['encryption', 'compression', 'cdn', 'versioning', 'backup'], $this->faker->numberBetween(2, 5
+                'pricing_tier' => // @var mixed faker->randomElement(['free', 'basic', 'premium', 'enterprise']
+                'support_level' => // @var mixed faker->randomElement(['basic', 'standard', 'premium', 'dedicated']
+                'uptime_percentage' => // @var mixed faker->randomFloat(2, 95, 99.99
+                'response_time_ms' => // @var mixed faker->numberBetween(10, 500
             ],
         ];
     }
@@ -81,7 +81,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function active(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'is_active' => true,
             'status' => 'active',
         ]);
@@ -92,7 +92,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function inactive(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'is_active' => false,
             'status' => 'inactive',
         ]);
@@ -103,7 +103,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function maintenance(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'status' => 'maintenance',
         ]);
     }
@@ -113,10 +113,10 @@ class CloudStorageProviderFactory extends Factory
      */
     public function error(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'status' => 'error',
-            'error_message' => $this->faker->sentence(),
-            'last_error_at' => $this->faker->dateTimeBetween('-1 week', 'now'),
+            'error_message' => // @var mixed faker->sentence(
+            'last_error_at' => // @var mixed faker->dateTimeBetween('-1 week', 'now'
         ]);
     }
 
@@ -125,7 +125,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function default(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'is_default' => true,
             'priority' => 1,
         ]);
@@ -136,9 +136,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function notDefault(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'is_default' => false,
-            'priority' => $this->faker->numberBetween(2, 10),
+            'priority' => // @var mixed faker->numberBetween(2, 10
         ]);
     }
 
@@ -147,7 +147,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function googleDrive(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'name' => 'Google Drive',
             'provider_key' => 'google_drive',
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
@@ -162,7 +162,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function dropbox(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'name' => 'Dropbox',
             'provider_key' => 'dropbox',
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
@@ -177,10 +177,10 @@ class CloudStorageProviderFactory extends Factory
      */
     public function awsS3(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'name' => 'AWS S3',
             'provider_key' => 'aws_s3',
-            'region' => $this->faker->randomElement(['us-east-1', 'eu-west-1', 'ap-southeast-1']),
+            'region' => // @var mixed faker->randomElement(['us-east-1', 'eu-west-1', 'ap-southeast-1']
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'provider_type' => 'cloud',
                 'features' => ['encryption', 'compression', 'cdn', 'versioning', 'backup', 'lifecycle'],
@@ -193,10 +193,10 @@ class CloudStorageProviderFactory extends Factory
      */
     public function azureBlob(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'name' => 'Azure Blob',
             'provider_key' => 'azure_blob',
-            'region' => $this->faker->randomElement(['eastus', 'westeurope', 'southeastasia']),
+            'region' => // @var mixed faker->randomElement(['eastus', 'westeurope', 'southeastasia']
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'provider_type' => 'cloud',
                 'features' => ['encryption', 'compression', 'cdn', 'versioning'],
@@ -209,7 +209,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function local(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'name' => 'Local Storage',
             'provider_key' => 'local',
             'endpoint' => '/storage/app/public',
@@ -225,8 +225,8 @@ class CloudStorageProviderFactory extends Factory
      */
     public function highPriority(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'priority' => $this->faker->numberBetween(1, 3),
+        return // @var mixed state(fn (array $attributes
+            'priority' => // @var mixed faker->numberBetween(1, 3
         ]);
     }
 
@@ -235,8 +235,8 @@ class CloudStorageProviderFactory extends Factory
      */
     public function lowPriority(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'priority' => $this->faker->numberBetween(8, 10),
+        return // @var mixed state(fn (array $attributes
+            'priority' => // @var mixed faker->numberBetween(8, 10
         ]);
     }
 
@@ -245,8 +245,8 @@ class CloudStorageProviderFactory extends Factory
      */
     public function largeCapacity(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'max_storage_size' => $this->faker->numberBetween(1099511627776, 10995116277760), // 1TB to 10TB
+        return // @var mixed state(fn (array $attributes
+            'max_storage_size' => // @var mixed faker->numberBetween(1099511627776, 10995116277760
         ]);
     }
 
@@ -255,8 +255,8 @@ class CloudStorageProviderFactory extends Factory
      */
     public function smallCapacity(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'max_storage_size' => $this->faker->numberBetween(107374182400, 536870912000), // 100GB to 500GB
+        return // @var mixed state(fn (array $attributes
+            'max_storage_size' => // @var mixed faker->numberBetween(107374182400, 536870912000
         ]);
     }
 
@@ -265,9 +265,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withManyFiles(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'file_count' => $this->faker->numberBetween(10000, 1000000),
-            'folder_count' => $this->faker->numberBetween(1000, 100000),
+        return // @var mixed state(fn (array $attributes
+            'file_count' => // @var mixed faker->numberBetween(10000, 1000000
+            'folder_count' => // @var mixed faker->numberBetween(1000, 100000
         ]);
     }
 
@@ -276,9 +276,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withFewFiles(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'file_count' => $this->faker->numberBetween(0, 1000),
-            'folder_count' => $this->faker->numberBetween(0, 100),
+        return // @var mixed state(fn (array $attributes
+            'file_count' => // @var mixed faker->numberBetween(0, 1000
+            'folder_count' => // @var mixed faker->numberBetween(0, 100
         ]);
     }
 
@@ -287,8 +287,8 @@ class CloudStorageProviderFactory extends Factory
      */
     public function highUsage(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'used_storage_size' => $this->faker->numberBetween(
+        return // @var mixed state(fn (array $attributes
+            'used_storage_size' => // @var mixed faker->numberBetween(
                 (int) ((is_numeric($attributes['max_storage_size'] ?? 0) ? (float) ($attributes['max_storage_size'] ?? 0) : 0) * 0.8),
                 (int) ((is_numeric($attributes['max_storage_size'] ?? 0) ? (float) ($attributes['max_storage_size'] ?? 0) : 0) * 0.95)
             ),
@@ -300,8 +300,8 @@ class CloudStorageProviderFactory extends Factory
      */
     public function lowUsage(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'used_storage_size' => $this->faker->numberBetween(
+        return // @var mixed state(fn (array $attributes
+            'used_storage_size' => // @var mixed faker->numberBetween(
                 0,
                 (int) ((is_numeric($attributes['max_storage_size'] ?? 0) ? (float) ($attributes['max_storage_size'] ?? 0) : 0) * 0.3)
             ),
@@ -313,7 +313,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withEncryption(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'encryption_enabled' => true,
             ]),
@@ -325,7 +325,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withoutEncryption(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'encryption_enabled' => false,
             ]),
@@ -337,7 +337,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withCdn(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'cdn_enabled' => true,
             ]),
@@ -349,7 +349,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withoutCdn(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'cdn_enabled' => false,
             ]),
@@ -361,7 +361,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withVersioning(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'versioning_enabled' => true,
             ]),
@@ -373,7 +373,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withoutVersioning(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'versioning_enabled' => false,
             ]),
@@ -385,7 +385,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withBackup(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'backup_enabled' => true,
             ]),
@@ -397,7 +397,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withoutBackup(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'backup_enabled' => false,
             ]),
@@ -409,7 +409,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withVirusScan(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'virus_scan_enabled' => true,
             ]),
@@ -421,7 +421,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function withoutVirusScan(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'virus_scan_enabled' => false,
             ]),
@@ -433,7 +433,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function realtimeSync(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'sync_interval' => 'realtime',
             ]),
@@ -445,7 +445,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function dailySync(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'sync_interval' => 'daily',
             ]),
@@ -457,7 +457,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function weeklySync(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'sync_interval' => 'weekly',
             ]),
@@ -469,9 +469,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function highUptime(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'uptime_percentage' => $this->faker->randomFloat(2, 99.5, 99.99),
+                'uptime_percentage' => // @var mixed faker->randomFloat(2, 99.5, 99.99
             ]),
         ]);
     }
@@ -481,9 +481,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function lowUptime(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'uptime_percentage' => $this->faker->randomFloat(2, 95, 99),
+                'uptime_percentage' => // @var mixed faker->randomFloat(2, 95, 99
             ]),
         ]);
     }
@@ -493,9 +493,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function fastResponse(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'response_time_ms' => $this->faker->numberBetween(10, 100),
+                'response_time_ms' => // @var mixed faker->numberBetween(10, 100
             ]),
         ]);
     }
@@ -505,9 +505,9 @@ class CloudStorageProviderFactory extends Factory
      */
     public function slowResponse(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'response_time_ms' => $this->faker->numberBetween(200, 500),
+                'response_time_ms' => // @var mixed faker->numberBetween(200, 500
             ]),
         ]);
     }
@@ -517,7 +517,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function enterprise(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'pricing_tier' => 'enterprise',
                 'support_level' => 'dedicated',
@@ -530,7 +530,7 @@ class CloudStorageProviderFactory extends Factory
      */
     public function free(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return // @var mixed state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'pricing_tier' => 'free',
                 'support_level' => 'basic',
