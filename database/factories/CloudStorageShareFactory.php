@@ -81,7 +81,7 @@ class CloudStorageShareFactory extends Factory
                 'approval_status' => $faker->optional(
                 'approved_by' => $faker->optional(
                 'approved_at' => $faker->optional(
-                'rejection_reason' => $faker->optional(
+                'rejection_reason' => $faker->optional()
             ],
             'metadata' => [
                 'share_purpose' => $faker->randomElement(['collaboration', 'presentation', 'backup', 'distribution', 'archival', 'temporary']
@@ -106,7 +106,7 @@ class CloudStorageShareFactory extends Factory
                 'views_this_month' => $faker->optional(
                 'downloads_today' => $faker->optional(
                 'downloads_this_week' => $faker->optional(
-                'downloads_this_month' => $faker->optional(
+                'downloads_this_month' => $faker->optional()
             ],
         ];
     }
@@ -165,7 +165,7 @@ class CloudStorageShareFactory extends Factory
             'share_type' => 'temporary',
             'expires_at' => $faker->dateTimeBetween('now', '+1 month'
             'auto_delete' => true,
-            'auto_delete_days' => $faker->numberBetween(1, 30
+            'auto_delete_days' => $faker->numberBetween(1, 30)
         ]);
     }
 
@@ -178,7 +178,7 @@ class CloudStorageShareFactory extends Factory
             'share_type' => 'password_protected',
             'is_password_protected' => true,
             'password' => $faker->password(
-            'password_hash' => $faker->sha1(
+            'password_hash' => $faker->sha1()
         ]);
     }
 
@@ -210,7 +210,7 @@ class CloudStorageShareFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'is_expired' => true,
-            'expires_at' => $faker->dateTimeBetween('-1 month', 'now'
+            'expires_at' => $faker->dateTimeBetween('-1 month', 'now')
         ]);
     }
 
@@ -320,7 +320,7 @@ class CloudStorageShareFactory extends Factory
     public function withDownloadLimit(): static
     {
         return $this->state(fn (array $attributes
-            'max_downloads' => $faker->numberBetween(1, 100
+            'max_downloads' => $faker->numberBetween(1, 100)
         ]);
     }
 
@@ -340,7 +340,7 @@ class CloudStorageShareFactory extends Factory
     public function withViewLimit(): static
     {
         return $this->state(fn (array $attributes
-            'max_views' => $faker->numberBetween(1, 1000
+            'max_views' => $faker->numberBetween(1, 1000)
         ]);
     }
 
@@ -360,7 +360,7 @@ class CloudStorageShareFactory extends Factory
     public function highDownloads(): static
     {
         return $this->state(fn (array $attributes
-            'download_count' => $faker->numberBetween(100, 1000
+            'download_count' => $faker->numberBetween(100, 1000)
         ]);
     }
 
@@ -370,7 +370,7 @@ class CloudStorageShareFactory extends Factory
     public function lowDownloads(): static
     {
         return $this->state(fn (array $attributes
-            'download_count' => $faker->numberBetween(0, 10
+            'download_count' => $faker->numberBetween(0, 10)
         ]);
     }
 
@@ -380,7 +380,7 @@ class CloudStorageShareFactory extends Factory
     public function highViews(): static
     {
         return $this->state(fn (array $attributes
-            'view_count' => $faker->numberBetween(1000, 10000
+            'view_count' => $faker->numberBetween(1000, 10000)
         ]);
     }
 
@@ -390,7 +390,7 @@ class CloudStorageShareFactory extends Factory
     public function lowViews(): static
     {
         return $this->state(fn (array $attributes
-            'view_count' => $faker->numberBetween(0, 100
+            'view_count' => $faker->numberBetween(0, 100)
         ]);
     }
 
@@ -722,7 +722,7 @@ class CloudStorageShareFactory extends Factory
             'view_count' => $faker->numberBetween(5000, 50000
             'favorites' => $faker->numberBetween(50, 500
             'shares' => $faker->numberBetween(100, 1000
-            'rating' => $faker->randomFloat(1, 4, 5
+            'rating' => $faker->randomFloat(1, 4, 5)
         ]);
     }
 
@@ -736,7 +736,7 @@ class CloudStorageShareFactory extends Factory
             'view_count' => $faker->numberBetween(0, 100
             'favorites' => $faker->numberBetween(0, 5
             'shares' => $faker->numberBetween(0, 20
-            'rating' => $faker->randomFloat(1, 1, 3
+            'rating' => $faker->randomFloat(1, 1, 3)
         ]);
     }
 }

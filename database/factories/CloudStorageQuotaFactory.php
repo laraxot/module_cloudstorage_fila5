@@ -70,7 +70,7 @@ class CloudStorageQuotaFactory extends Factory
                 'compression_enabled' => $faker->boolean(50
                 'encryption_enabled' => $faker->boolean(80
                 'backup_enabled' => $faker->boolean(70
-                'sync_enabled' => $faker->boolean(85
+                'sync_enabled' => $faker->boolean(85)
             ],
             'metadata' => [
                 'quota_category' => $faker->randomElement(['free', 'basic', 'premium', 'enterprise', 'custom']
@@ -82,7 +82,7 @@ class CloudStorageQuotaFactory extends Factory
                 'features_included' => $faker->randomElements(['encryption', 'compression', 'backup', 'sync', 'cdn', 'versioning'], $this->faker->numberBetween(2, 6
                 'support_level' => $faker->randomElement(['basic', 'standard', 'premium', 'dedicated']
                 'uptime_guarantee' => $faker->randomFloat(2, 95, 99.99
-                'response_time_guarantee_ms' => $faker->numberBetween(50, 500
+                'response_time_guarantee_ms' => $faker->numberBetween(50, 500)
             ],
         ];
     }
@@ -138,7 +138,7 @@ class CloudStorageQuotaFactory extends Factory
         return $this->state(fn (array $attributes
             'quota_type' => 'storage',
             'limit' => $faker->numberBetween(107374182400, 1099511627776
-            'used' => $faker->numberBetween(0, 107374182400
+            'used' => $faker->numberBetween(0, 107374182400)
         ]);
     }
 
@@ -150,7 +150,7 @@ class CloudStorageQuotaFactory extends Factory
         return $this->state(fn (array $attributes
             'quota_type' => 'file_count',
             'limit' => $faker->numberBetween(1000, 1000000
-            'used' => $faker->numberBetween(0, 100000
+            'used' => $faker->numberBetween(0, 100000)
         ]);
     }
 
@@ -162,7 +162,7 @@ class CloudStorageQuotaFactory extends Factory
         return $this->state(fn (array $attributes
             'quota_type' => 'bandwidth',
             'limit' => $faker->numberBetween(107374182400, 1099511627776
-            'used' => $faker->numberBetween(0, 107374182400
+            'used' => $faker->numberBetween(0, 107374182400)
         ]);
     }
 
@@ -174,7 +174,7 @@ class CloudStorageQuotaFactory extends Factory
         return $this->state(fn (array $attributes
             'quota_type' => 'api_calls',
             'limit' => $faker->numberBetween(10000, 10000000
-            'used' => $faker->numberBetween(0, 1000000
+            'used' => $faker->numberBetween(0, 1000000)
         ]);
     }
 
@@ -188,7 +188,7 @@ class CloudStorageQuotaFactory extends Factory
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.8),
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.95)
             ),
-            'percentage_used' => $faker->randomFloat(2, 80, 95
+            'percentage_used' => $faker->randomFloat(2, 80, 95)
         ]);
     }
 
@@ -202,7 +202,7 @@ class CloudStorageQuotaFactory extends Factory
                 0,
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.3)
             ),
-            'percentage_used' => $faker->randomFloat(2, 0, 30
+            'percentage_used' => $faker->randomFloat(2, 0, 30)
         ]);
     }
 
@@ -218,7 +218,7 @@ class CloudStorageQuotaFactory extends Factory
             ),
             'percentage_used' => $faker->randomFloat(2, 95, 99
             'is_critical_sent' => true,
-            'last_critical_sent_at' => $faker->dateTimeBetween('-1 week', 'now'
+            'last_critical_sent_at' => $faker->dateTimeBetween('-1 week', 'now')
         ]);
     }
 
@@ -234,7 +234,7 @@ class CloudStorageQuotaFactory extends Factory
             ),
             'percentage_used' => $faker->randomFloat(2, 70, 85
             'is_warning_sent' => true,
-            'last_warning_sent_at' => $faker->dateTimeBetween('-1 week', 'now'
+            'last_warning_sent_at' => $faker->dateTimeBetween('-1 week', 'now')
         ]);
     }
 
@@ -245,7 +245,7 @@ class CloudStorageQuotaFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'reset_frequency' => 'daily',
-            'next_reset_at' => $faker->dateTimeBetween('now', '+1 day'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 day')
         ]);
     }
 
@@ -256,7 +256,7 @@ class CloudStorageQuotaFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'reset_frequency' => 'weekly',
-            'next_reset_at' => $faker->dateTimeBetween('now', '+1 week'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 week')
         ]);
     }
 
@@ -267,7 +267,7 @@ class CloudStorageQuotaFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'reset_frequency' => 'monthly',
-            'next_reset_at' => $faker->dateTimeBetween('now', '+1 month'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 month')
         ]);
     }
 
@@ -278,7 +278,7 @@ class CloudStorageQuotaFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'reset_frequency' => 'yearly',
-            'next_reset_at' => $faker->dateTimeBetween('now', '+1 year'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 year')
         ]);
     }
 
@@ -303,7 +303,7 @@ class CloudStorageQuotaFactory extends Factory
             'is_grace_period_active' => true,
             'grace_period_started_at' => $faker->dateTimeBetween('-1 week', 'now'
             'grace_period_ends_at' => $faker->dateTimeBetween('now', '+1 month'
-            'grace_period_days' => $faker->numberBetween(7, 30
+            'grace_period_days' => $faker->numberBetween(7, 30)
         ]);
     }
 
@@ -329,7 +329,7 @@ class CloudStorageQuotaFactory extends Factory
             'overage_allowed' => true,
             'overage_limit' => $faker->numberBetween(10737418240, 107374182400
             'overage_used' => $faker->numberBetween(0, 10737418240
-            'overage_cost_per_gb' => $faker->randomFloat(4, 0.01, 0.50
+            'overage_cost_per_gb' => $faker->randomFloat(4, 0.01, 0.50)
         ]);
     }
 
@@ -402,7 +402,7 @@ class CloudStorageQuotaFactory extends Factory
                 'cost_per_gb' => $faker->randomFloat(4, 0.10, 0.50
                 'features_included' => ['encryption', 'compression', 'backup', 'sync', 'cdn', 'versioning'],
                 'support_level' => 'dedicated',
-                'uptime_guarantee' => $faker->randomFloat(2, 99.5, 99.99
+                'uptime_guarantee' => $faker->randomFloat(2, 99.5, 99.99)
             ]),
         ]);
     }
@@ -445,7 +445,7 @@ class CloudStorageQuotaFactory extends Factory
         return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'auto_cleanup_enabled' => true,
-                'cleanup_threshold' => $faker->randomFloat(2, 80, 95
+                'cleanup_threshold' => $faker->randomFloat(2, 80, 95)
             ]),
         ]);
     }

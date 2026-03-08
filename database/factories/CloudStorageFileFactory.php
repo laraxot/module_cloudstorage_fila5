@@ -62,7 +62,7 @@ class CloudStorageFileFactory extends Factory
                 'description' => $faker->optional(
                 'author' => $faker->optional(
                 'copyright' => $faker->optional(
-                'license' => $faker->optional(
+                'license' => $faker->optional()
             ],
             'settings' => [
                 'auto_delete' => $faker->boolean(30
@@ -72,14 +72,14 @@ class CloudStorageFileFactory extends Factory
                 'cdn_enabled' => $faker->boolean(60
                 'virus_scan_enabled' => $faker->boolean(80
                 'watermark_enabled' => $faker->boolean(20
-                'thumbnail_enabled' => $faker->boolean(90
+                'thumbnail_enabled' => $faker->boolean(90)
             ],
             'user_id' => $faker->numberBetween(1, 100
             'folder_id' => $faker->optional(
             'uploaded_at' => $faker->dateTimeBetween('-1 month', 'now'
             'last_accessed_at' => $faker->optional(
             'download_count' => $faker->numberBetween(0, 1000
-            'view_count' => $faker->numberBetween(0, 5000
+            'view_count' => $faker->numberBetween(0, 5000)
         ];
     }
 
@@ -112,7 +112,7 @@ class CloudStorageFileFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'status' => 'completed',
-            'uploaded_at' => $faker->dateTimeBetween('-1 month', 'now'
+            'uploaded_at' => $faker->dateTimeBetween('-1 month', 'now')
         ]);
     }
 
@@ -164,7 +164,7 @@ class CloudStorageFileFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'is_encrypted' => true,
-            'encryption_key' => $faker->sha1(
+            'encryption_key' => $faker->sha1()
         ]);
     }
 
@@ -185,7 +185,7 @@ class CloudStorageFileFactory extends Factory
     public function small(): static
     {
         return $this->state(fn (array $attributes
-            'size' => $faker->numberBetween(1024, 1048576
+            'size' => $faker->numberBetween(1024, 1048576)
         ]);
     }
 
@@ -195,7 +195,7 @@ class CloudStorageFileFactory extends Factory
     public function large(): static
     {
         return $this->state(fn (array $attributes
-            'size' => $faker->numberBetween(104857600, 1073741824
+            'size' => $faker->numberBetween(104857600, 1073741824)
         ]);
     }
 
@@ -209,7 +209,7 @@ class CloudStorageFileFactory extends Factory
             'mime_type' => $faker->randomElement(['image/jpeg', 'image/png', 'image/gif', 'image/webp']
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'width' => $faker->numberBetween(100, 4000
-                'height' => $faker->numberBetween(100, 4000
+                'height' => $faker->numberBetween(100, 4000)
             ]),
         ]);
     }
@@ -225,7 +225,7 @@ class CloudStorageFileFactory extends Factory
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'duration' => $faker->numberBetween(1, 3600
                 'bitrate' => $faker->numberBetween(128, 320
-                'fps' => $faker->randomFloat(1, 24, 60
+                'fps' => $faker->randomFloat(1, 24, 60)
             ]),
         ]);
     }
@@ -313,7 +313,7 @@ class CloudStorageFileFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'download_count' => $faker->numberBetween(1000, 10000
-            'view_count' => $faker->numberBetween(5000, 50000
+            'view_count' => $faker->numberBetween(5000, 50000)
         ]);
     }
 
@@ -334,7 +334,7 @@ class CloudStorageFileFactory extends Factory
     public function recentlyAccessed(): static
     {
         return $this->state(fn (array $attributes
-            'last_accessed_at' => $faker->dateTimeBetween('-1 week', 'now'
+            'last_accessed_at' => $faker->dateTimeBetween('-1 week', 'now')
         ]);
     }
 
@@ -344,7 +344,7 @@ class CloudStorageFileFactory extends Factory
     public function notRecentlyAccessed(): static
     {
         return $this->state(fn (array $attributes
-            'last_accessed_at' => $faker->dateTimeBetween('-6 months', '-1 month'
+            'last_accessed_at' => $faker->dateTimeBetween('-6 months', '-1 month')
         ]);
     }
 }

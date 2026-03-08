@@ -38,7 +38,7 @@ class GoogleDriveFileListPage extends Page
         $driveService = $driveService;
 
         dddx([
-            'listFiles' => $driveService->getFiles(
+            'listFiles' => $driveService->getFiles()
         ]);
     }
 
@@ -57,8 +57,7 @@ class GoogleDriveFileListPage extends Page
                     ->dateTime('Y-m-d H:i:s'),
 
                 TextColumn::make('size')
-
-                    ->formatStateUsing(fn ($state): string => is_numeric($state) ? $this->formatFileSize((int
+                    ->formatStateUsing(fn ($state): string => is_numeric($state) ? $this->formatFileSize((int) $state) : ''),
             ])
             ->recordActions([
                 Action::make('view')
