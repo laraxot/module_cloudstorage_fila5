@@ -48,7 +48,7 @@ class CloudStorageFolderFactory extends Factory
                 'compression_enabled' => $faker->boolean(40
                 'virus_scan_enabled' => $faker->boolean(80
                 'watermark_enabled' => $faker->boolean(20
-                'thumbnail_enabled' => $faker->boolean(90
+                'thumbnail_enabled' => $faker->boolean(90)
             ],
             'settings' => [
                 'auto_delete' => $faker->boolean(30
@@ -62,7 +62,7 @@ class CloudStorageFolderFactory extends Factory
                 'encryption_algorithm' => $faker->optional(
                 'cdn_enabled' => $faker->boolean(60
                 'versioning_enabled' => $faker->boolean(50
-                'lifecycle_policy' => $faker->optional(
+                'lifecycle_policy' => $faker->optional()
             ],
             'user_id' => $faker->numberBetween(1, 100
             'created_at' => $faker->dateTimeBetween('-1 year', 'now'
@@ -70,7 +70,7 @@ class CloudStorageFolderFactory extends Factory
             'last_accessed_at' => $faker->optional(
             'file_count' => $faker->numberBetween(0, 1000
             'total_size' => $faker->numberBetween(0, 10737418240
-            'subfolder_count' => $faker->numberBetween(0, 50
+            'subfolder_count' => $faker->numberBetween(0, 50)
         ];
     }
 
@@ -155,7 +155,7 @@ class CloudStorageFolderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'is_encrypted' => true,
-            'encryption_key' => $faker->sha1(
+            'encryption_key' => $faker->sha1()
         ]);
     }
 
@@ -182,7 +182,7 @@ class CloudStorageFolderFactory extends Factory
         return $this->state(fn (array $attributes
             'parent_id' => null,
             'path' => 'folders/' . $faker->slug(
-            'storage_path' => 'cloud/folders/' . $faker->slug(
+            'storage_path' => 'cloud/folders/' . $faker->slug()
         ]);
     }
 
@@ -208,7 +208,7 @@ class CloudStorageFolderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'file_count' => $faker->numberBetween(100, 10000
-            'total_size' => $faker->numberBetween(1073741824, 107374182400
+            'total_size' => $faker->numberBetween(1073741824, 107374182400)
         ]);
     }
 
@@ -221,7 +221,7 @@ class CloudStorageFolderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'file_count' => $faker->numberBetween(0, 10
-            'total_size' => $faker->numberBetween(0, 104857600
+            'total_size' => $faker->numberBetween(0, 104857600)
         ]);
     }
 
@@ -233,7 +233,7 @@ class CloudStorageFolderFactory extends Factory
     public function withManySubfolders(): static
     {
         return $this->state(fn (array $attributes
-            'subfolder_count' => $faker->numberBetween(10, 100
+            'subfolder_count' => $faker->numberBetween(10, 100)
         ]);
     }
 
@@ -258,7 +258,7 @@ class CloudStorageFolderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'file_count' => $faker->numberBetween(1000, 100000
-            'total_size' => $faker->numberBetween(107374182400, 1073741824000
+            'total_size' => $faker->numberBetween(107374182400, 1073741824000)
         ]);
     }
 
@@ -271,7 +271,7 @@ class CloudStorageFolderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'file_count' => $faker->numberBetween(0, 100
-            'total_size' => $faker->numberBetween(0, 104857600
+            'total_size' => $faker->numberBetween(0, 104857600)
         ]);
     }
 
@@ -416,7 +416,7 @@ class CloudStorageFolderFactory extends Factory
     public function recentlyAccessed(): static
     {
         return $this->state(fn (array $attributes
-            'last_accessed_at' => $faker->dateTimeBetween('-1 week', 'now'
+            'last_accessed_at' => $faker->dateTimeBetween('-1 week', 'now')
         ]);
     }
 
@@ -428,7 +428,7 @@ class CloudStorageFolderFactory extends Factory
     public function notRecentlyAccessed(): static
     {
         return $this->state(fn (array $attributes
-            'last_accessed_at' => $faker->dateTimeBetween('-6 months', '-1 month'
+            'last_accessed_at' => $faker->dateTimeBetween('-6 months', '-1 month')
         ]);
     }
 

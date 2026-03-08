@@ -90,7 +90,7 @@ class CloudStorageUploadFactory extends Factory
                 'max_width' => $faker->optional(
                 'max_height' => $faker->optional(
                 'preserve_exif' => $faker->boolean(60
-                'strip_metadata' => $faker->boolean(30
+                'strip_metadata' => $faker->boolean(30)
             ],
             'metadata' => [
                 'upload_source' => $faker->randomElement(['web', 'mobile_app', 'api', 'desktop_app', 'cli']
@@ -114,7 +114,7 @@ class CloudStorageUploadFactory extends Factory
                 'downloads' => $faker->optional(
                 'favorites' => $faker->optional(
                 'comments' => $faker->optional(
-                'shares' => $faker->optional(
+                'shares' => $faker->optional()
             ],
         ];
     }
@@ -204,7 +204,7 @@ class CloudStorageUploadFactory extends Factory
             'failed_at' => $faker->dateTimeBetween('-30 minutes', 'now'
             'cancelled_at' => null,
             'error_message' => $faker->sentence(
-            'error_code' => $faker->randomElement(['NETWORK_ERROR', 'QUOTA_EXCEEDED', 'INVALID_FILE', 'PROVIDER_ERROR']
+            'error_code' => $faker->randomElement(['NETWORK_ERROR', 'QUOTA_EXCEEDED', 'INVALID_FILE', 'PROVIDER_ERROR'])
         ]);
     }
 
@@ -219,7 +219,7 @@ class CloudStorageUploadFactory extends Factory
             'started_at' => $faker->dateTimeBetween('-1 hour', '-30 minutes'
             'completed_at' => null,
             'failed_at' => null,
-            'cancelled_at' => $faker->dateTimeBetween('-30 minutes', 'now'
+            'cancelled_at' => $faker->dateTimeBetween('-30 minutes', 'now')
         ]);
     }
 
@@ -367,7 +367,7 @@ class CloudStorageUploadFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'is_background' => true,
-            'priority' => $faker->numberBetween(5, 10
+            'priority' => $faker->numberBetween(5, 10)
         ]);
     }
 
@@ -378,7 +378,7 @@ class CloudStorageUploadFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'is_background' => false,
-            'priority' => $faker->numberBetween(1, 5
+            'priority' => $faker->numberBetween(1, 5)
         ]);
     }
 
@@ -390,7 +390,7 @@ class CloudStorageUploadFactory extends Factory
         return $this->state(fn (array $attributes
             'is_resumable' => true,
             'chunk_size' => 10485760, // 10MB
-            'total_chunks' => $faker->numberBetween(5, 50
+            'total_chunks' => $faker->numberBetween(5, 50)
         ]);
     }
 
@@ -414,7 +414,7 @@ class CloudStorageUploadFactory extends Factory
         return $this->state(fn (array $attributes
             'is_encrypted' => true,
             'encryption_key' => $faker->sha1(
-            'encryption_algorithm' => $faker->randomElement(['AES-256', 'ChaCha20', 'Twofish']
+            'encryption_algorithm' => $faker->randomElement(['AES-256', 'ChaCha20', 'Twofish'])
         ]);
     }
 
@@ -439,7 +439,7 @@ class CloudStorageUploadFactory extends Factory
             'is_compressed' => true,
             'compression_ratio' => $faker->randomFloat(2, 0.1, 0.9
             'original_size' => $faker->numberBetween(1048576, 1073741824
-            'compressed_size' => $faker->numberBetween(1048576, 1073741824
+            'compressed_size' => $faker->numberBetween(1048576, 1073741824)
         ]);
     }
 
@@ -485,7 +485,7 @@ class CloudStorageUploadFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'webhook_url' => $faker->url(
-            'callback_data' => $faker->text(
+            'callback_data' => $faker->text()
         ]);
     }
 
@@ -507,7 +507,7 @@ class CloudStorageUploadFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'retry_count' => $faker->numberBetween(1, 5
-            'max_retries' => $faker->numberBetween(3, 10
+            'max_retries' => $faker->numberBetween(3, 10)
         ]);
     }
 
@@ -529,7 +529,7 @@ class CloudStorageUploadFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'upload_speed' => $faker->randomFloat(2, 10, 100
-            'estimated_time_remaining' => $faker->numberBetween(1, 300
+            'estimated_time_remaining' => $faker->numberBetween(1, 300)
         ]);
     }
 
@@ -540,7 +540,7 @@ class CloudStorageUploadFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'upload_speed' => $faker->randomFloat(2, 0.1, 5
-            'estimated_time_remaining' => $faker->numberBetween(600, 3600
+            'estimated_time_remaining' => $faker->numberBetween(600, 3600)
         ]);
     }
 
@@ -552,7 +552,7 @@ class CloudStorageUploadFactory extends Factory
         return $this->state(fn (array $attributes
             'metadata' => array_merge($safeMetadata($attributes['metadata'] ?? []
                 'upload_source' => 'web',
-                'browser_info' => $faker->userAgent(
+                'browser_info' => $faker->userAgent()
             ]),
         ]);
     }
@@ -565,7 +565,7 @@ class CloudStorageUploadFactory extends Factory
         return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'upload_source' => 'mobile_app',
-                'device_info' => $faker->randomElement(['iOS 15.0', 'Android 12.0', 'iOS 16.0', 'Android 13.0']
+                'device_info' => $faker->randomElement(['iOS 15.0', 'Android 12.0', 'iOS 16.0', 'Android 13.0'])
             ]),
         ]);
     }
@@ -578,7 +578,7 @@ class CloudStorageUploadFactory extends Factory
         return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'upload_source' => 'api',
-                'referrer' => $faker->url(
+                'referrer' => $faker->url()
             ]),
         ]);
     }

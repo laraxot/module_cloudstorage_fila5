@@ -62,7 +62,7 @@ class CloudStorageProviderFactory extends Factory
                 'backup_enabled' => $faker->boolean(80
                 'virus_scan_enabled' => $faker->boolean(90
                 'watermark_enabled' => $faker->boolean(30
-                'thumbnail_enabled' => $faker->boolean(85
+                'thumbnail_enabled' => $faker->boolean(85)
             ],
             'metadata' => [
                 'provider_type' => $faker->randomElement(['cloud', 'local', 'hybrid']
@@ -71,7 +71,7 @@ class CloudStorageProviderFactory extends Factory
                 'pricing_tier' => $faker->randomElement(['free', 'basic', 'premium', 'enterprise']
                 'support_level' => $faker->randomElement(['basic', 'standard', 'premium', 'dedicated']
                 'uptime_percentage' => $faker->randomFloat(2, 95, 99.99
-                'response_time_ms' => $faker->numberBetween(10, 500
+                'response_time_ms' => $faker->numberBetween(10, 500)
             ],
         ];
     }
@@ -116,7 +116,7 @@ class CloudStorageProviderFactory extends Factory
         return $this->state(fn (array $attributes
             'status' => 'error',
             'error_message' => $faker->sentence(
-            'last_error_at' => $faker->dateTimeBetween('-1 week', 'now'
+            'last_error_at' => $faker->dateTimeBetween('-1 week', 'now')
         ]);
     }
 
@@ -138,7 +138,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'is_default' => false,
-            'priority' => $faker->numberBetween(2, 10
+            'priority' => $faker->numberBetween(2, 10)
         ]);
     }
 
@@ -226,7 +226,7 @@ class CloudStorageProviderFactory extends Factory
     public function highPriority(): static
     {
         return $this->state(fn (array $attributes
-            'priority' => $faker->numberBetween(1, 3
+            'priority' => $faker->numberBetween(1, 3)
         ]);
     }
 
@@ -236,7 +236,7 @@ class CloudStorageProviderFactory extends Factory
     public function lowPriority(): static
     {
         return $this->state(fn (array $attributes
-            'priority' => $faker->numberBetween(8, 10
+            'priority' => $faker->numberBetween(8, 10)
         ]);
     }
 
@@ -246,7 +246,7 @@ class CloudStorageProviderFactory extends Factory
     public function largeCapacity(): static
     {
         return $this->state(fn (array $attributes
-            'max_storage_size' => $faker->numberBetween(1099511627776, 10995116277760
+            'max_storage_size' => $faker->numberBetween(1099511627776, 10995116277760)
         ]);
     }
 
@@ -256,7 +256,7 @@ class CloudStorageProviderFactory extends Factory
     public function smallCapacity(): static
     {
         return $this->state(fn (array $attributes
-            'max_storage_size' => $faker->numberBetween(107374182400, 536870912000
+            'max_storage_size' => $faker->numberBetween(107374182400, 536870912000)
         ]);
     }
 
@@ -267,7 +267,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'file_count' => $faker->numberBetween(10000, 1000000
-            'folder_count' => $faker->numberBetween(1000, 100000
+            'folder_count' => $faker->numberBetween(1000, 100000)
         ]);
     }
 
@@ -278,7 +278,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'file_count' => $faker->numberBetween(0, 1000
-            'folder_count' => $faker->numberBetween(0, 100
+            'folder_count' => $faker->numberBetween(0, 100)
         ]);
     }
 
@@ -471,7 +471,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'uptime_percentage' => $faker->randomFloat(2, 99.5, 99.99
+                'uptime_percentage' => $faker->randomFloat(2, 99.5, 99.99)
             ]),
         ]);
     }
@@ -483,7 +483,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'uptime_percentage' => $faker->randomFloat(2, 95, 99
+                'uptime_percentage' => $faker->randomFloat(2, 95, 99)
             ]),
         ]);
     }
@@ -495,7 +495,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'response_time_ms' => $faker->numberBetween(10, 100
+                'response_time_ms' => $faker->numberBetween(10, 100)
             ]),
         ]);
     }
@@ -507,7 +507,7 @@ class CloudStorageProviderFactory extends Factory
     {
         return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
-                'response_time_ms' => $faker->numberBetween(200, 500
+                'response_time_ms' => $faker->numberBetween(200, 500)
             ]),
         ]);
     }
