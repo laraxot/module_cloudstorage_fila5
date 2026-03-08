@@ -53,8 +53,8 @@ class GDriveFileListPage extends Page implements HasTable
     {
         // Passiamo `$this` come argomento a `Table::make()`
         return Tables\Table::make($this)
-            ->columns(// @var mixed getTableColumns(
-            ->query(fn () => // @var mixed getTableRecords(; // Impostiamo la query per la tabella
+            ->columns($getTableColumns(
+            ->query(fn () => $this->getTableRecords()); // Impostiamo la query per la tabella
     }
     */
 }

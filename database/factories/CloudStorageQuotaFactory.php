@@ -29,60 +29,60 @@ class CloudStorageQuotaFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => // @var mixed faker->numberBetween(1, 1000
-            'provider_id' => // @var mixed faker->numberBetween(1, 100
-            'quota_type' => // @var mixed faker->randomElement(['storage', 'file_count', 'bandwidth', 'api_calls']
-            'limit' => // @var mixed faker->numberBetween(107374182400, 1099511627776
-            'used' => // @var mixed faker->numberBetween(0, 107374182400
-            'remaining' => // @var mixed faker->numberBetween(0, 107374182400
-            'percentage_used' => // @var mixed faker->randomFloat(2, 0, 100
-            'is_active' => // @var mixed faker->boolean(80
-            'is_unlimited' => // @var mixed faker->boolean(10
-            'reset_frequency' => // @var mixed faker->randomElement(['never', 'daily', 'weekly', 'monthly', 'yearly']
-            'reset_date' => // @var mixed faker->optional(
-            'last_reset_at' => // @var mixed faker->optional(
-            'next_reset_at' => // @var mixed faker->optional(
-            'warning_threshold' => // @var mixed faker->randomFloat(2, 70, 90
-            'critical_threshold' => // @var mixed faker->randomFloat(2, 90, 99
-            'is_warning_sent' => // @var mixed faker->boolean(30
-            'is_critical_sent' => // @var mixed faker->boolean(10
-            'last_warning_sent_at' => // @var mixed faker->optional(
-            'last_critical_sent_at' => // @var mixed faker->optional(
-            'grace_period_days' => // @var mixed faker->numberBetween(0, 30
-            'is_grace_period_active' => // @var mixed faker->boolean(20
-            'grace_period_started_at' => // @var mixed faker->optional(
-            'grace_period_ends_at' => // @var mixed faker->optional(
-            'overage_allowed' => // @var mixed faker->boolean(40
-            'overage_limit' => // @var mixed faker->optional(
-            'overage_used' => // @var mixed faker->optional(
-            'overage_cost_per_gb' => // @var mixed faker->optional(
-            'total_overage_cost' => // @var mixed faker->optional(
+            'user_id' => $faker->numberBetween(1, 1000
+            'provider_id' => $faker->numberBetween(1, 100
+            'quota_type' => $faker->randomElement(['storage', 'file_count', 'bandwidth', 'api_calls']
+            'limit' => $faker->numberBetween(107374182400, 1099511627776
+            'used' => $faker->numberBetween(0, 107374182400
+            'remaining' => $faker->numberBetween(0, 107374182400
+            'percentage_used' => $faker->randomFloat(2, 0, 100
+            'is_active' => $faker->boolean(80
+            'is_unlimited' => $faker->boolean(10
+            'reset_frequency' => $faker->randomElement(['never', 'daily', 'weekly', 'monthly', 'yearly']
+            'reset_date' => $faker->optional(
+            'last_reset_at' => $faker->optional(
+            'next_reset_at' => $faker->optional(
+            'warning_threshold' => $faker->randomFloat(2, 70, 90
+            'critical_threshold' => $faker->randomFloat(2, 90, 99
+            'is_warning_sent' => $faker->boolean(30
+            'is_critical_sent' => $faker->boolean(10
+            'last_warning_sent_at' => $faker->optional(
+            'last_critical_sent_at' => $faker->optional(
+            'grace_period_days' => $faker->numberBetween(0, 30
+            'is_grace_period_active' => $faker->boolean(20
+            'grace_period_started_at' => $faker->optional(
+            'grace_period_ends_at' => $faker->optional(
+            'overage_allowed' => $faker->boolean(40
+            'overage_limit' => $faker->optional(
+            'overage_used' => $faker->optional(
+            'overage_cost_per_gb' => $faker->optional(
+            'total_overage_cost' => $faker->optional(
             'settings' => [
-                'auto_cleanup_enabled' => // @var mixed faker->boolean(60
-                'cleanup_threshold' => // @var mixed faker->randomFloat(2, 80, 95
-                'notifications_enabled' => // @var mixed faker->boolean(90
-                'email_notifications' => // @var mixed faker->boolean(80
-                'sms_notifications' => // @var mixed faker->boolean(30
-                'push_notifications' => // @var mixed faker->boolean(70
-                'webhook_notifications' => // @var mixed faker->boolean(40
-                'retention_policy' => // @var mixed faker->randomElement(['keep_all', 'delete_old', 'archive_old']
-                'retention_days' => // @var mixed faker->optional(
-                'compression_enabled' => // @var mixed faker->boolean(50
-                'encryption_enabled' => // @var mixed faker->boolean(80
-                'backup_enabled' => // @var mixed faker->boolean(70
-                'sync_enabled' => // @var mixed faker->boolean(85
+                'auto_cleanup_enabled' => $faker->boolean(60
+                'cleanup_threshold' => $faker->randomFloat(2, 80, 95
+                'notifications_enabled' => $faker->boolean(90
+                'email_notifications' => $faker->boolean(80
+                'sms_notifications' => $faker->boolean(30
+                'push_notifications' => $faker->boolean(70
+                'webhook_notifications' => $faker->boolean(40
+                'retention_policy' => $faker->randomElement(['keep_all', 'delete_old', 'archive_old']
+                'retention_days' => $faker->optional(
+                'compression_enabled' => $faker->boolean(50
+                'encryption_enabled' => $faker->boolean(80
+                'backup_enabled' => $faker->boolean(70
+                'sync_enabled' => $faker->boolean(85
             ],
             'metadata' => [
-                'quota_category' => // @var mixed faker->randomElement(['free', 'basic', 'premium', 'enterprise', 'custom']
-                'billing_cycle' => // @var mixed faker->randomElement(['monthly', 'quarterly', 'yearly', 'one_time']
-                'cost_per_gb' => // @var mixed faker->randomFloat(4, 0.01, 1.00
-                'currency' => // @var mixed faker->randomElement(['USD', 'EUR', 'GBP', 'JPY']
-                'tax_rate' => // @var mixed faker->randomFloat(2, 0, 25
-                'discount_percentage' => // @var mixed faker->randomFloat(2, 0, 50
-                'features_included' => // @var mixed faker->randomElements(['encryption', 'compression', 'backup', 'sync', 'cdn', 'versioning'], $this->faker->numberBetween(2, 6
-                'support_level' => // @var mixed faker->randomElement(['basic', 'standard', 'premium', 'dedicated']
-                'uptime_guarantee' => // @var mixed faker->randomFloat(2, 95, 99.99
-                'response_time_guarantee_ms' => // @var mixed faker->numberBetween(50, 500
+                'quota_category' => $faker->randomElement(['free', 'basic', 'premium', 'enterprise', 'custom']
+                'billing_cycle' => $faker->randomElement(['monthly', 'quarterly', 'yearly', 'one_time']
+                'cost_per_gb' => $faker->randomFloat(4, 0.01, 1.00
+                'currency' => $faker->randomElement(['USD', 'EUR', 'GBP', 'JPY']
+                'tax_rate' => $faker->randomFloat(2, 0, 25
+                'discount_percentage' => $faker->randomFloat(2, 0, 50
+                'features_included' => $faker->randomElements(['encryption', 'compression', 'backup', 'sync', 'cdn', 'versioning'], $this->faker->numberBetween(2, 6
+                'support_level' => $faker->randomElement(['basic', 'standard', 'premium', 'dedicated']
+                'uptime_guarantee' => $faker->randomFloat(2, 95, 99.99
+                'response_time_guarantee_ms' => $faker->numberBetween(50, 500
             ],
         ];
     }
@@ -92,7 +92,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function active(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_active' => true,
         ]);
     }
@@ -102,7 +102,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function inactive(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_active' => false,
         ]);
     }
@@ -112,7 +112,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function unlimited(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_unlimited' => true,
             'limit' => 0,
             'remaining' => 0,
@@ -125,7 +125,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function limited(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_unlimited' => false,
         ]);
     }
@@ -135,10 +135,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function storage(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'quota_type' => 'storage',
-            'limit' => // @var mixed faker->numberBetween(107374182400, 1099511627776
-            'used' => // @var mixed faker->numberBetween(0, 107374182400
+            'limit' => $faker->numberBetween(107374182400, 1099511627776
+            'used' => $faker->numberBetween(0, 107374182400
         ]);
     }
 
@@ -147,10 +147,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function fileCount(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'quota_type' => 'file_count',
-            'limit' => // @var mixed faker->numberBetween(1000, 1000000
-            'used' => // @var mixed faker->numberBetween(0, 100000
+            'limit' => $faker->numberBetween(1000, 1000000
+            'used' => $faker->numberBetween(0, 100000
         ]);
     }
 
@@ -159,10 +159,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function bandwidth(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'quota_type' => 'bandwidth',
-            'limit' => // @var mixed faker->numberBetween(107374182400, 1099511627776
-            'used' => // @var mixed faker->numberBetween(0, 107374182400
+            'limit' => $faker->numberBetween(107374182400, 1099511627776
+            'used' => $faker->numberBetween(0, 107374182400
         ]);
     }
 
@@ -171,10 +171,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function apiCalls(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'quota_type' => 'api_calls',
-            'limit' => // @var mixed faker->numberBetween(10000, 10000000
-            'used' => // @var mixed faker->numberBetween(0, 1000000
+            'limit' => $faker->numberBetween(10000, 10000000
+            'used' => $faker->numberBetween(0, 1000000
         ]);
     }
 
@@ -183,12 +183,12 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function highUsage(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'used' => // @var mixed faker->numberBetween(
+        return $this->state(fn (array $attributes
+            'used' => $faker->numberBetween(
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.8),
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.95)
             ),
-            'percentage_used' => // @var mixed faker->randomFloat(2, 80, 95
+            'percentage_used' => $faker->randomFloat(2, 80, 95
         ]);
     }
 
@@ -197,12 +197,12 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function lowUsage(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'used' => // @var mixed faker->numberBetween(
+        return $this->state(fn (array $attributes
+            'used' => $faker->numberBetween(
                 0,
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.3)
             ),
-            'percentage_used' => // @var mixed faker->randomFloat(2, 0, 30
+            'percentage_used' => $faker->randomFloat(2, 0, 30
         ]);
     }
 
@@ -211,14 +211,14 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function criticalUsage(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'used' => // @var mixed faker->numberBetween(
+        return $this->state(fn (array $attributes
+            'used' => $faker->numberBetween(
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.95),
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.99)
             ),
-            'percentage_used' => // @var mixed faker->randomFloat(2, 95, 99
+            'percentage_used' => $faker->randomFloat(2, 95, 99
             'is_critical_sent' => true,
-            'last_critical_sent_at' => // @var mixed faker->dateTimeBetween('-1 week', 'now'
+            'last_critical_sent_at' => $faker->dateTimeBetween('-1 week', 'now'
         ]);
     }
 
@@ -227,14 +227,14 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function warningUsage(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'used' => // @var mixed faker->numberBetween(
+        return $this->state(fn (array $attributes
+            'used' => $faker->numberBetween(
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.7),
                 (int) ((is_numeric($attributes['limit'] ?? 0) ? (float) ($attributes['limit'] ?? 0) : 0) * 0.85)
             ),
-            'percentage_used' => // @var mixed faker->randomFloat(2, 70, 85
+            'percentage_used' => $faker->randomFloat(2, 70, 85
             'is_warning_sent' => true,
-            'last_warning_sent_at' => // @var mixed faker->dateTimeBetween('-1 week', 'now'
+            'last_warning_sent_at' => $faker->dateTimeBetween('-1 week', 'now'
         ]);
     }
 
@@ -243,9 +243,9 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function dailyReset(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'reset_frequency' => 'daily',
-            'next_reset_at' => // @var mixed faker->dateTimeBetween('now', '+1 day'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 day'
         ]);
     }
 
@@ -254,9 +254,9 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function weeklyReset(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'reset_frequency' => 'weekly',
-            'next_reset_at' => // @var mixed faker->dateTimeBetween('now', '+1 week'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 week'
         ]);
     }
 
@@ -265,9 +265,9 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function monthlyReset(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'reset_frequency' => 'monthly',
-            'next_reset_at' => // @var mixed faker->dateTimeBetween('now', '+1 month'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 month'
         ]);
     }
 
@@ -276,9 +276,9 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function yearlyReset(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'reset_frequency' => 'yearly',
-            'next_reset_at' => // @var mixed faker->dateTimeBetween('now', '+1 year'
+            'next_reset_at' => $faker->dateTimeBetween('now', '+1 year'
         ]);
     }
 
@@ -287,7 +287,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function noReset(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'reset_frequency' => 'never',
             'reset_date' => null,
             'next_reset_at' => null,
@@ -299,11 +299,11 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withGracePeriod(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_grace_period_active' => true,
-            'grace_period_started_at' => // @var mixed faker->dateTimeBetween('-1 week', 'now'
-            'grace_period_ends_at' => // @var mixed faker->dateTimeBetween('now', '+1 month'
-            'grace_period_days' => // @var mixed faker->numberBetween(7, 30
+            'grace_period_started_at' => $faker->dateTimeBetween('-1 week', 'now'
+            'grace_period_ends_at' => $faker->dateTimeBetween('now', '+1 month'
+            'grace_period_days' => $faker->numberBetween(7, 30
         ]);
     }
 
@@ -312,7 +312,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutGracePeriod(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_grace_period_active' => false,
             'grace_period_started_at' => null,
             'grace_period_ends_at' => null,
@@ -325,11 +325,11 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withOverage(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'overage_allowed' => true,
-            'overage_limit' => // @var mixed faker->numberBetween(10737418240, 107374182400
-            'overage_used' => // @var mixed faker->numberBetween(0, 10737418240
-            'overage_cost_per_gb' => // @var mixed faker->randomFloat(4, 0.01, 0.50
+            'overage_limit' => $faker->numberBetween(10737418240, 107374182400
+            'overage_used' => $faker->numberBetween(0, 10737418240
+            'overage_cost_per_gb' => $faker->randomFloat(4, 0.01, 0.50
         ]);
     }
 
@@ -338,7 +338,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutOverage(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'overage_allowed' => false,
             'overage_limit' => 0,
             'overage_used' => 0,
@@ -351,7 +351,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function free(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'quota_category' => 'free',
                 'cost_per_gb' => 0,
@@ -366,10 +366,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function basic(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'quota_category' => 'basic',
-                'cost_per_gb' => // @var mixed faker->randomFloat(4, 0.01, 0.10
+                'cost_per_gb' => $faker->randomFloat(4, 0.01, 0.10
                 'features_included' => ['encryption', 'backup', 'sync'],
                 'support_level' => 'standard',
             ]),
@@ -381,10 +381,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function premium(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'quota_category' => 'premium',
-                'cost_per_gb' => // @var mixed faker->randomFloat(4, 0.05, 0.25
+                'cost_per_gb' => $faker->randomFloat(4, 0.05, 0.25
                 'features_included' => ['encryption', 'backup', 'sync', 'cdn', 'versioning'],
                 'support_level' => 'premium',
             ]),
@@ -396,13 +396,13 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function enterprise(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'quota_category' => 'enterprise',
-                'cost_per_gb' => // @var mixed faker->randomFloat(4, 0.10, 0.50
+                'cost_per_gb' => $faker->randomFloat(4, 0.10, 0.50
                 'features_included' => ['encryption', 'compression', 'backup', 'sync', 'cdn', 'versioning'],
                 'support_level' => 'dedicated',
-                'uptime_guarantee' => // @var mixed faker->randomFloat(2, 99.5, 99.99
+                'uptime_guarantee' => $faker->randomFloat(2, 99.5, 99.99
             ]),
         ]);
     }
@@ -412,11 +412,11 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withNotifications(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'notifications_enabled' => true,
                 'email_notifications' => true,
-                'sms_notifications' => // @var mixed faker->boolean(50
+                'sms_notifications' => $faker->boolean(50
                 'push_notifications' => true,
             ]),
         ]);
@@ -427,7 +427,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutNotifications(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'notifications_enabled' => false,
                 'email_notifications' => false,
@@ -442,10 +442,10 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withAutoCleanup(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'auto_cleanup_enabled' => true,
-                'cleanup_threshold' => // @var mixed faker->randomFloat(2, 80, 95
+                'cleanup_threshold' => $faker->randomFloat(2, 80, 95
             ]),
         ]);
     }
@@ -455,7 +455,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutAutoCleanup(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'auto_cleanup_enabled' => false,
             ]),
@@ -467,7 +467,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withEncryption(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'encryption_enabled' => true,
             ]),
@@ -479,7 +479,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutEncryption(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'encryption_enabled' => false,
             ]),
@@ -491,7 +491,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withBackup(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'backup_enabled' => true,
             ]),
@@ -503,7 +503,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutBackup(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'backup_enabled' => false,
             ]),
@@ -515,7 +515,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withSync(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'sync_enabled' => true,
             ]),
@@ -527,7 +527,7 @@ class CloudStorageQuotaFactory extends Factory
      */
     public function withoutSync(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'settings' => array_merge(is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [], [
                 'sync_enabled' => false,
             ]),

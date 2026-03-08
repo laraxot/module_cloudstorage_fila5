@@ -29,92 +29,92 @@ class CloudStorageUploadFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => // @var mixed faker->numberBetween(1, 1000
-            'file_id' => // @var mixed faker->numberBetween(1, 10000
-            'provider_id' => // @var mixed faker->numberBetween(1, 100
-            'folder_id' => // @var mixed faker->optional(
-            'original_filename' => sprintf('%s.%s', (string) // @var mixed faker->word(
-            'temp_filename' => // @var mixed faker->uuid(
-            'file_size' => // @var mixed faker->numberBetween(1024, 1073741824
-            'mime_type' => // @var mixed faker->randomElement(['image/jpeg', 'image/png', 'application/pdf', 'text/plain', 'video/mp4']
-            'upload_status' => // @var mixed faker->randomElement(['pending', 'uploading', 'completed', 'failed', 'cancelled']
-            'progress_percentage' => // @var mixed faker->numberBetween(0, 100
-            'upload_speed' => // @var mixed faker->randomFloat(2, 0.1, 100
-            'estimated_time_remaining' => // @var mixed faker->optional(
-            'started_at' => // @var mixed faker->optional(
-            'completed_at' => // @var mixed faker->optional(
-            'failed_at' => // @var mixed faker->optional(
-            'cancelled_at' => // @var mixed faker->optional(
-            'retry_count' => // @var mixed faker->numberBetween(0, 5
-            'max_retries' => // @var mixed faker->numberBetween(3, 10
-            'error_message' => // @var mixed faker->optional(
-            'error_code' => // @var mixed faker->optional(
-            'is_resumable' => // @var mixed faker->boolean(70
-            'resume_position' => // @var mixed faker->optional(
-            'chunk_size' => // @var mixed faker->numberBetween(1048576, 104857600
-            'total_chunks' => // @var mixed faker->numberBetween(1, 100
-            'uploaded_chunks' => // @var mixed faker->numberBetween(0, 100
-            'checksum' => // @var mixed faker->sha1(
-            'checksum_algorithm' => // @var mixed faker->randomElement(['md5', 'sha1', 'sha256', 'sha512']
-            'is_encrypted' => // @var mixed faker->boolean(60
-            'encryption_key' => // @var mixed faker->optional(
-            'encryption_algorithm' => // @var mixed faker->optional(
-            'is_compressed' => // @var mixed faker->boolean(40
-            'compression_ratio' => // @var mixed faker->optional(
-            'original_size' => // @var mixed faker->optional(
-            'compressed_size' => // @var mixed faker->optional(
-            'ip_address' => // @var mixed faker->ipv4(
-            'user_agent' => // @var mixed faker->userAgent(
-            'session_id' => // @var mixed faker->uuid(
-            'request_id' => // @var mixed faker->uuid(
-            'priority' => // @var mixed faker->numberBetween(1, 10
-            'is_background' => // @var mixed faker->boolean(30
-            'notify_on_completion' => // @var mixed faker->boolean(80
-            'notify_on_failure' => // @var mixed faker->boolean(90
-            'webhook_url' => // @var mixed faker->optional(
-            'callback_data' => // @var mixed faker->optional(
+            'user_id' => $faker->numberBetween(1, 1000
+            'file_id' => $faker->numberBetween(1, 10000
+            'provider_id' => $faker->numberBetween(1, 100
+            'folder_id' => $faker->optional(
+            'original_filename' => sprintf('%s.%s', (string) $faker->word(
+            'temp_filename' => $faker->uuid(
+            'file_size' => $faker->numberBetween(1024, 1073741824
+            'mime_type' => $faker->randomElement(['image/jpeg', 'image/png', 'application/pdf', 'text/plain', 'video/mp4']
+            'upload_status' => $faker->randomElement(['pending', 'uploading', 'completed', 'failed', 'cancelled']
+            'progress_percentage' => $faker->numberBetween(0, 100
+            'upload_speed' => $faker->randomFloat(2, 0.1, 100
+            'estimated_time_remaining' => $faker->optional(
+            'started_at' => $faker->optional(
+            'completed_at' => $faker->optional(
+            'failed_at' => $faker->optional(
+            'cancelled_at' => $faker->optional(
+            'retry_count' => $faker->numberBetween(0, 5
+            'max_retries' => $faker->numberBetween(3, 10
+            'error_message' => $faker->optional(
+            'error_code' => $faker->optional(
+            'is_resumable' => $faker->boolean(70
+            'resume_position' => $faker->optional(
+            'chunk_size' => $faker->numberBetween(1048576, 104857600
+            'total_chunks' => $faker->numberBetween(1, 100
+            'uploaded_chunks' => $faker->numberBetween(0, 100
+            'checksum' => $faker->sha1(
+            'checksum_algorithm' => $faker->randomElement(['md5', 'sha1', 'sha256', 'sha512']
+            'is_encrypted' => $faker->boolean(60
+            'encryption_key' => $faker->optional(
+            'encryption_algorithm' => $faker->optional(
+            'is_compressed' => $faker->boolean(40
+            'compression_ratio' => $faker->optional(
+            'original_size' => $faker->optional(
+            'compressed_size' => $faker->optional(
+            'ip_address' => $faker->ipv4(
+            'user_agent' => $faker->userAgent(
+            'session_id' => $faker->uuid(
+            'request_id' => $faker->uuid(
+            'priority' => $faker->numberBetween(1, 10
+            'is_background' => $faker->boolean(30
+            'notify_on_completion' => $faker->boolean(80
+            'notify_on_failure' => $faker->boolean(90
+            'webhook_url' => $faker->optional(
+            'callback_data' => $faker->optional(
             'settings' => [
-                'auto_compress' => // @var mixed faker->boolean(50
-                'auto_encrypt' => // @var mixed faker->boolean(70
-                'overwrite_existing' => // @var mixed faker->boolean(20
-                'create_backup' => // @var mixed faker->boolean(60
-                'validate_checksum' => // @var mixed faker->boolean(90
-                'scan_virus' => // @var mixed faker->boolean(80
-                'generate_thumbnail' => // @var mixed faker->boolean(70
-                'extract_metadata' => // @var mixed faker->boolean(85
-                'optimize_image' => // @var mixed faker->boolean(40
-                'convert_format' => // @var mixed faker->boolean(30
-                'watermark' => // @var mixed faker->boolean(20
-                'resize_image' => // @var mixed faker->boolean(35
-                'quality' => // @var mixed faker->numberBetween(50, 100
-                'max_width' => // @var mixed faker->optional(
-                'max_height' => // @var mixed faker->optional(
-                'preserve_exif' => // @var mixed faker->boolean(60
-                'strip_metadata' => // @var mixed faker->boolean(30
+                'auto_compress' => $faker->boolean(50
+                'auto_encrypt' => $faker->boolean(70
+                'overwrite_existing' => $faker->boolean(20
+                'create_backup' => $faker->boolean(60
+                'validate_checksum' => $faker->boolean(90
+                'scan_virus' => $faker->boolean(80
+                'generate_thumbnail' => $faker->boolean(70
+                'extract_metadata' => $faker->boolean(85
+                'optimize_image' => $faker->boolean(40
+                'convert_format' => $faker->boolean(30
+                'watermark' => $faker->boolean(20
+                'resize_image' => $faker->boolean(35
+                'quality' => $faker->numberBetween(50, 100
+                'max_width' => $faker->optional(
+                'max_height' => $faker->optional(
+                'preserve_exif' => $faker->boolean(60
+                'strip_metadata' => $faker->boolean(30
             ],
             'metadata' => [
-                'upload_source' => // @var mixed faker->randomElement(['web', 'mobile_app', 'api', 'desktop_app', 'cli']
-                'upload_method' => // @var mixed faker->randomElement(['single', 'chunked', 'streaming', 'multipart']
-                'browser_info' => // @var mixed faker->optional(
-                'device_info' => // @var mixed faker->optional(
-                'location' => // @var mixed faker->optional(
-                'timezone' => // @var mixed faker->optional(
-                'language' => // @var mixed faker->optional(
-                'referrer' => // @var mixed faker->optional(
-                'campaign' => // @var mixed faker->optional(
-                'tags' => // @var mixed faker->optional(
-                'category' => // @var mixed faker->optional(
-                'description' => // @var mixed faker->optional(
-                'keywords' => // @var mixed faker->optional(
-                'author' => // @var mixed faker->optional(
-                'copyright' => // @var mixed faker->optional(
-                'license' => // @var mixed faker->optional(
-                'rating' => // @var mixed faker->optional(
-                'views' => // @var mixed faker->optional(
-                'downloads' => // @var mixed faker->optional(
-                'favorites' => // @var mixed faker->optional(
-                'comments' => // @var mixed faker->optional(
-                'shares' => // @var mixed faker->optional(
+                'upload_source' => $faker->randomElement(['web', 'mobile_app', 'api', 'desktop_app', 'cli']
+                'upload_method' => $faker->randomElement(['single', 'chunked', 'streaming', 'multipart']
+                'browser_info' => $faker->optional(
+                'device_info' => $faker->optional(
+                'location' => $faker->optional(
+                'timezone' => $faker->optional(
+                'language' => $faker->optional(
+                'referrer' => $faker->optional(
+                'campaign' => $faker->optional(
+                'tags' => $faker->optional(
+                'category' => $faker->optional(
+                'description' => $faker->optional(
+                'keywords' => $faker->optional(
+                'author' => $faker->optional(
+                'copyright' => $faker->optional(
+                'license' => $faker->optional(
+                'rating' => $faker->optional(
+                'views' => $faker->optional(
+                'downloads' => $faker->optional(
+                'favorites' => $faker->optional(
+                'comments' => $faker->optional(
+                'shares' => $faker->optional(
             ],
         ];
     }
@@ -150,7 +150,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function pending(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'upload_status' => 'pending',
             'progress_percentage' => 0,
             'started_at' => null,
@@ -165,10 +165,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function uploading(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'upload_status' => 'uploading',
-            'progress_percentage' => // @var mixed faker->numberBetween(1, 99
-            'started_at' => // @var mixed faker->dateTimeBetween('-1 hour', 'now'
+            'progress_percentage' => $faker->numberBetween(1, 99
+            'started_at' => $faker->dateTimeBetween('-1 hour', 'now'
             'completed_at' => null,
             'failed_at' => null,
             'cancelled_at' => null,
@@ -180,11 +180,11 @@ class CloudStorageUploadFactory extends Factory
      */
     public function completed(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'upload_status' => 'completed',
             'progress_percentage' => 100,
-            'started_at' => // @var mixed faker->dateTimeBetween('-1 hour', '-30 minutes'
-            'completed_at' => // @var mixed faker->dateTimeBetween('-30 minutes', 'now'
+            'started_at' => $faker->dateTimeBetween('-1 hour', '-30 minutes'
+            'completed_at' => $faker->dateTimeBetween('-30 minutes', 'now'
             'failed_at' => null,
             'cancelled_at' => null,
             'uploaded_chunks' => $attributes['total_chunks'],
@@ -196,15 +196,15 @@ class CloudStorageUploadFactory extends Factory
      */
     public function failed(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'upload_status' => 'failed',
-            'progress_percentage' => // @var mixed faker->numberBetween(0, 99
-            'started_at' => // @var mixed faker->dateTimeBetween('-1 hour', '-30 minutes'
+            'progress_percentage' => $faker->numberBetween(0, 99
+            'started_at' => $faker->dateTimeBetween('-1 hour', '-30 minutes'
             'completed_at' => null,
-            'failed_at' => // @var mixed faker->dateTimeBetween('-30 minutes', 'now'
+            'failed_at' => $faker->dateTimeBetween('-30 minutes', 'now'
             'cancelled_at' => null,
-            'error_message' => // @var mixed faker->sentence(
-            'error_code' => // @var mixed faker->randomElement(['NETWORK_ERROR', 'QUOTA_EXCEEDED', 'INVALID_FILE', 'PROVIDER_ERROR']
+            'error_message' => $faker->sentence(
+            'error_code' => $faker->randomElement(['NETWORK_ERROR', 'QUOTA_EXCEEDED', 'INVALID_FILE', 'PROVIDER_ERROR']
         ]);
     }
 
@@ -213,13 +213,13 @@ class CloudStorageUploadFactory extends Factory
      */
     public function cancelled(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'upload_status' => 'cancelled',
-            'progress_percentage' => // @var mixed faker->numberBetween(0, 99
-            'started_at' => // @var mixed faker->dateTimeBetween('-1 hour', '-30 minutes'
+            'progress_percentage' => $faker->numberBetween(0, 99
+            'started_at' => $faker->dateTimeBetween('-1 hour', '-30 minutes'
             'completed_at' => null,
             'failed_at' => null,
-            'cancelled_at' => // @var mixed faker->dateTimeBetween('-30 minutes', 'now'
+            'cancelled_at' => $faker->dateTimeBetween('-30 minutes', 'now'
         ]);
     }
 
@@ -228,8 +228,8 @@ class CloudStorageUploadFactory extends Factory
      */
     public function small(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'file_size' => // @var mixed faker->numberBetween(1024, 1048576
+        return $this->state(fn (array $attributes
+            'file_size' => $faker->numberBetween(1024, 1048576
             'total_chunks' => 1,
             'chunk_size' => 1048576, // 1MB
         ]);
@@ -240,9 +240,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function large(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'file_size' => // @var mixed faker->numberBetween(104857600, 1073741824
-            'total_chunks' => // @var mixed faker->numberBetween(10, 100
+        return $this->state(fn (array $attributes
+            'file_size' => $faker->numberBetween(104857600, 1073741824
+            'total_chunks' => $faker->numberBetween(10, 100
             'chunk_size' => 10485760, // 10MB
         ]);
     }
@@ -252,10 +252,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function image(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'mime_type' => // @var mixed faker->randomElement(['image/jpeg', 'image/png', 'image/gif', 'image/webp']
-            'original_filename' => // @var mixed faker->randomElement(['photo.jpg', 'image.png', 'screenshot.gif', 'picture.webp']
-            'settings' => array_merge(// @var mixed safeSettings($attributes['settings'] ?? []
+        return $this->state(fn (array $attributes
+            'mime_type' => $faker->randomElement(['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+            'original_filename' => $faker->randomElement(['photo.jpg', 'image.png', 'screenshot.gif', 'picture.webp']
+            'settings' => array_merge($safeSettings($attributes['settings'] ?? []
                 'generate_thumbnail' => true,
                 'optimize_image' => true,
                 'preserve_exif' => true,
@@ -271,14 +271,14 @@ class CloudStorageUploadFactory extends Factory
      */
     public function document(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'mime_type' => // @var mixed faker->randomElement(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain']
-            'original_filename' => // @var mixed faker->randomElement(['document.pdf', 'report.docx', 'notes.txt', 'presentation.pptx']
-            'settings' => array_merge(// @var mixed safeSettings($attributes['settings'] ?? []
+        return $this->state(fn (array $attributes
+            'mime_type' => $faker->randomElement(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain']
+            'original_filename' => $faker->randomElement(['document.pdf', 'report.docx', 'notes.txt', 'presentation.pptx']
+            'settings' => array_merge($safeSettings($attributes['settings'] ?? []
                 'extract_metadata' => true,
                 'scan_virus' => true,
             ]),
-            'metadata' => array_merge(// @var mixed safeMetadata($attributes['metadata'] ?? []
+            'metadata' => array_merge($safeMetadata($attributes['metadata'] ?? []
                 'category' => 'document',
             ]),
         ]);
@@ -289,11 +289,11 @@ class CloudStorageUploadFactory extends Factory
      */
     public function video(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'mime_type' => // @var mixed faker->randomElement(['video/mp4', 'video/avi', 'video/mov', 'video/wmv']
-            'original_filename' => // @var mixed faker->randomElement(['video.mp4', 'movie.avi', 'clip.mov', 'recording.wmv']
-            'file_size' => // @var mixed faker->numberBetween(10485760, 1073741824
-            'settings' => array_merge(// @var mixed safeSettings($attributes['settings'] ?? []
+        return $this->state(fn (array $attributes
+            'mime_type' => $faker->randomElement(['video/mp4', 'video/avi', 'video/mov', 'video/wmv']
+            'original_filename' => $faker->randomElement(['video.mp4', 'movie.avi', 'clip.mov', 'recording.wmv']
+            'file_size' => $faker->numberBetween(10485760, 1073741824
+            'settings' => array_merge($safeSettings($attributes['settings'] ?? []
                 'extract_metadata' => true,
                 'generate_thumbnail' => true,
             ]),
@@ -308,10 +308,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function audio(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'mime_type' => // @var mixed faker->randomElement(['audio/mpeg', 'audio/wav', 'audio/flac', 'audio/ogg']
-            'original_filename' => // @var mixed faker->randomElement(['song.mp3', 'recording.wav', 'music.flac', 'podcast.ogg']
-            'settings' => array_merge(// @var mixed safeSettings($attributes['settings'] ?? []
+        return $this->state(fn (array $attributes
+            'mime_type' => $faker->randomElement(['audio/mpeg', 'audio/wav', 'audio/flac', 'audio/ogg']
+            'original_filename' => $faker->randomElement(['song.mp3', 'recording.wav', 'music.flac', 'podcast.ogg']
+            'settings' => array_merge($safeSettings($attributes['settings'] ?? []
                 'extract_metadata' => true,
             ]),
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
@@ -325,10 +325,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function archive(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'mime_type' => // @var mixed faker->randomElement(['application/zip', 'application/x-rar-compressed', 'application/x-7z-compressed', 'application/x-tar']
-            'original_filename' => // @var mixed faker->randomElement(['archive.zip', 'files.rar', 'backup.7z', 'data.tar']
-            'settings' => array_merge(// @var mixed safeSettings($attributes['settings'] ?? []
+        return $this->state(fn (array $attributes
+            'mime_type' => $faker->randomElement(['application/zip', 'application/x-rar-compressed', 'application/x-7z-compressed', 'application/x-tar']
+            'original_filename' => $faker->randomElement(['archive.zip', 'files.rar', 'backup.7z', 'data.tar']
+            'settings' => array_merge($safeSettings($attributes['settings'] ?? []
                 'scan_virus' => true,
                 'extract_metadata' => true,
             ]),
@@ -343,8 +343,8 @@ class CloudStorageUploadFactory extends Factory
      */
     public function highPriority(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'priority' => // @var mixed faker->numberBetween(1, 3
+        return $this->state(fn (array $attributes
+            'priority' => $faker->numberBetween(1, 3
             'is_background' => false,
         ]);
     }
@@ -354,8 +354,8 @@ class CloudStorageUploadFactory extends Factory
      */
     public function lowPriority(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'priority' => // @var mixed faker->numberBetween(8, 10
+        return $this->state(fn (array $attributes
+            'priority' => $faker->numberBetween(8, 10
             'is_background' => true,
         ]);
     }
@@ -365,9 +365,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function background(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_background' => true,
-            'priority' => // @var mixed faker->numberBetween(5, 10
+            'priority' => $faker->numberBetween(5, 10
         ]);
     }
 
@@ -376,9 +376,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function foreground(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_background' => false,
-            'priority' => // @var mixed faker->numberBetween(1, 5
+            'priority' => $faker->numberBetween(1, 5
         ]);
     }
 
@@ -387,10 +387,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function resumable(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_resumable' => true,
             'chunk_size' => 10485760, // 10MB
-            'total_chunks' => // @var mixed faker->numberBetween(5, 50
+            'total_chunks' => $faker->numberBetween(5, 50
         ]);
     }
 
@@ -399,7 +399,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function nonResumable(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_resumable' => false,
             'chunk_size' => $attributes['file_size'],
             'total_chunks' => 1,
@@ -411,10 +411,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function encrypted(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_encrypted' => true,
-            'encryption_key' => // @var mixed faker->sha1(
-            'encryption_algorithm' => // @var mixed faker->randomElement(['AES-256', 'ChaCha20', 'Twofish']
+            'encryption_key' => $faker->sha1(
+            'encryption_algorithm' => $faker->randomElement(['AES-256', 'ChaCha20', 'Twofish']
         ]);
     }
 
@@ -423,7 +423,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function nonEncrypted(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_encrypted' => false,
             'encryption_key' => null,
             'encryption_algorithm' => null,
@@ -435,11 +435,11 @@ class CloudStorageUploadFactory extends Factory
      */
     public function compressed(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_compressed' => true,
-            'compression_ratio' => // @var mixed faker->randomFloat(2, 0.1, 0.9
-            'original_size' => // @var mixed faker->numberBetween(1048576, 1073741824
-            'compressed_size' => // @var mixed faker->numberBetween(1048576, 1073741824
+            'compression_ratio' => $faker->randomFloat(2, 0.1, 0.9
+            'original_size' => $faker->numberBetween(1048576, 1073741824
+            'compressed_size' => $faker->numberBetween(1048576, 1073741824
         ]);
     }
 
@@ -448,7 +448,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function nonCompressed(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'is_compressed' => false,
             'compression_ratio' => null,
             'original_size' => null,
@@ -461,7 +461,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function withNotifications(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'notify_on_completion' => true,
             'notify_on_failure' => true,
         ]);
@@ -472,7 +472,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function withoutNotifications(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'notify_on_completion' => false,
             'notify_on_failure' => false,
         ]);
@@ -483,9 +483,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function withWebhook(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'webhook_url' => // @var mixed faker->url(
-            'callback_data' => // @var mixed faker->text(
+        return $this->state(fn (array $attributes
+            'webhook_url' => $faker->url(
+            'callback_data' => $faker->text(
         ]);
     }
 
@@ -494,7 +494,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function withoutWebhook(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'webhook_url' => null,
             'callback_data' => null,
         ]);
@@ -505,9 +505,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function withRetries(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'retry_count' => // @var mixed faker->numberBetween(1, 5
-            'max_retries' => // @var mixed faker->numberBetween(3, 10
+        return $this->state(fn (array $attributes
+            'retry_count' => $faker->numberBetween(1, 5
+            'max_retries' => $faker->numberBetween(3, 10
         ]);
     }
 
@@ -516,7 +516,7 @@ class CloudStorageUploadFactory extends Factory
      */
     public function withoutRetries(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'retry_count' => 0,
             'max_retries' => 0,
         ]);
@@ -527,9 +527,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function fast(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'upload_speed' => // @var mixed faker->randomFloat(2, 10, 100
-            'estimated_time_remaining' => // @var mixed faker->numberBetween(1, 300
+        return $this->state(fn (array $attributes
+            'upload_speed' => $faker->randomFloat(2, 10, 100
+            'estimated_time_remaining' => $faker->numberBetween(1, 300
         ]);
     }
 
@@ -538,9 +538,9 @@ class CloudStorageUploadFactory extends Factory
      */
     public function slow(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'upload_speed' => // @var mixed faker->randomFloat(2, 0.1, 5
-            'estimated_time_remaining' => // @var mixed faker->numberBetween(600, 3600
+        return $this->state(fn (array $attributes
+            'upload_speed' => $faker->randomFloat(2, 0.1, 5
+            'estimated_time_remaining' => $faker->numberBetween(600, 3600
         ]);
     }
 
@@ -549,10 +549,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function fromWeb(): static
     {
-        return // @var mixed state(fn (array $attributes
-            'metadata' => array_merge(// @var mixed safeMetadata($attributes['metadata'] ?? []
+        return $this->state(fn (array $attributes
+            'metadata' => array_merge($safeMetadata($attributes['metadata'] ?? []
                 'upload_source' => 'web',
-                'browser_info' => // @var mixed faker->userAgent(
+                'browser_info' => $faker->userAgent(
             ]),
         ]);
     }
@@ -562,10 +562,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function fromMobileApp(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'upload_source' => 'mobile_app',
-                'device_info' => // @var mixed faker->randomElement(['iOS 15.0', 'Android 12.0', 'iOS 16.0', 'Android 13.0']
+                'device_info' => $faker->randomElement(['iOS 15.0', 'Android 12.0', 'iOS 16.0', 'Android 13.0']
             ]),
         ]);
     }
@@ -575,10 +575,10 @@ class CloudStorageUploadFactory extends Factory
      */
     public function fromApi(): static
     {
-        return // @var mixed state(fn (array $attributes
+        return $this->state(fn (array $attributes
             'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
                 'upload_source' => 'api',
-                'referrer' => // @var mixed faker->url(
+                'referrer' => $faker->url(
             ]),
         ]);
     }

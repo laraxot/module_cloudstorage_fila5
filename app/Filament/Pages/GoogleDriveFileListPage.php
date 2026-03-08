@@ -35,10 +35,10 @@ class GoogleDriveFileListPage extends Page
 
     public function mount(GoogleDriveService $driveService): void
     {
-        // @var mixed driveService = $driveService;
+        $driveService = $driveService;
 
         dddx([
-            'listFiles' => // @var mixed driveService->getFiles(
+            'listFiles' => $driveService->getFiles(
         ]);
     }
 
@@ -58,7 +58,7 @@ class GoogleDriveFileListPage extends Page
 
                 TextColumn::make('size')
 
-                    ->formatStateUsing(fn ($state): string => is_numeric($state) ? // @var mixed formatFileSize((int
+                    ->formatStateUsing(fn ($state): string => is_numeric($state) ? $this->formatFileSize((int
             ])
             ->recordActions([
                 Action::make('view')
@@ -69,21 +69,21 @@ class GoogleDriveFileListPage extends Page
                 Action::make('share')
                     ->icon('heroicon-o-share')
                     ->tooltip(__('Share to Corporate Folder'))
-                    ->action(fn ($record) => // @var mixed shareFileToCorporate($record['id']
+                    ->action(fn ($record) => $this->shareFileToCorporate($record['id']
                 */
             ]);
     }
 
     protected function getFilesQuery(): array
     {
-        return // @var mixed driveService->getFiles(;
+        return $driveService->getFiles();
     }
 
     /*
     protected function shareFileToCorporate(string $fileId): void
     {
         $corporateFolderId = config('cloudstorage.corporate_folder_id'); // Set in config
-        // @var mixed driveService->shareFile($fileId, $corporateFolderId;
+        $driveService->shareFile($fileId, $corporateFolderId);
 
         // You can log or notify the user about the sharing status.
     }
