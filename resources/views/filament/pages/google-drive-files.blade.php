@@ -1,3 +1,3 @@
 <x-filament::page>
-    {{ $this->table }}
+    {{ // @var mixed table }}
 </x-filament::page>
