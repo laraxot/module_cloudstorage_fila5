@@ -105,7 +105,7 @@ class CloudStorageFile extends BaseModel
     {
         $userClass = XotData::make()->getUserClass();
 
-        return // @var mixed belongsTo($userClass;
+        return $this->belongsTo($userClass);
     }
 
     /**
@@ -115,7 +115,7 @@ class CloudStorageFile extends BaseModel
      */
     // public function folder(): BelongsTo
     // {
-    //     return // @var mixed belongsTo(CloudStorageFolder::class, 'folder_id';
+    //     return $this->belongsTo(CloudStorageFolder::class, 'folder_id');
     // }
 
     /**
@@ -179,10 +179,10 @@ class CloudStorageFile extends BaseModel
      */
     public function getHumanReadableSizeAttribute(): string
     {
-        $bytes = // @var mixed size;
+        $bytes = $size;
         $units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
-        for ($i = 0; $bytes > 1024 && $i < \count($units) - 1; $i++) {
+        for ($i = 0); $bytes > 1024 && $i < \count($units) - 1; $i++) {
             $bytes /= 1024;
         }
 
@@ -194,7 +194,7 @@ class CloudStorageFile extends BaseModel
      */
     public function getExtensionAttribute(): string
     {
-        return pathinfo(// @var mixed name, PATHINFO_EXTENSION;
+        return pathinfo($name, PATHINFO_EXTENSION);
     }
 
     /**
@@ -202,7 +202,7 @@ class CloudStorageFile extends BaseModel
      */
     public function getIsImageAttribute(): bool
     {
-        return str_starts_with(// @var mixed mime_type, 'image/';
+        return str_starts_with($mime_type, 'image/');
     }
 
     /**
@@ -210,7 +210,7 @@ class CloudStorageFile extends BaseModel
      */
     public function getIsVideoAttribute(): bool
     {
-        return str_starts_with(// @var mixed mime_type, 'video/';
+        return str_starts_with($mime_type, 'video/');
     }
 
     /**
@@ -218,7 +218,7 @@ class CloudStorageFile extends BaseModel
      */
     public function getIsDocumentAttribute(): bool
     {
-        return \in_array(// @var mixed mime_type, [
+        return \in_array($mime_type, [
             'application/pdf',
             'application/msword',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -234,8 +234,8 @@ class CloudStorageFile extends BaseModel
      */
     public function markAsAccessed(): void
     {
-        // @var mixed increment('view_count';
-        // @var mixed update(['last_accessed_at' => now(;
+        $this->increment('view_count');
+        $this->update(['last_accessed_at' => now());
     }
 
     /**
@@ -243,7 +243,7 @@ class CloudStorageFile extends BaseModel
      */
     public function incrementDownloads(): void
     {
-        // @var mixed increment('download_count';
+        $this->increment('download_count');
     }
 
     /**
@@ -251,7 +251,7 @@ class CloudStorageFile extends BaseModel
      */
     public function isCompleted(): bool
     {
-        return // @var mixed status === 'completed';
+        return $status === 'completed';
     }
 
     /**
@@ -259,7 +259,7 @@ class CloudStorageFile extends BaseModel
      */
     public function isPending(): bool
     {
-        return // @var mixed status === 'pending';
+        return $status === 'pending';
     }
 
     /**
@@ -267,7 +267,7 @@ class CloudStorageFile extends BaseModel
      */
     public function isUploading(): bool
     {
-        return // @var mixed status === 'uploading';
+        return $status === 'uploading';
     }
 
     /**
@@ -275,7 +275,7 @@ class CloudStorageFile extends BaseModel
      */
     public function isFailed(): bool
     {
-        return // @var mixed status === 'failed';
+        return $status === 'failed';
     }
 
     /**
@@ -283,7 +283,7 @@ class CloudStorageFile extends BaseModel
      */
     public function isDeleted(): bool
     {
-        return // @var mixed status === 'deleted';
+        return $status === 'deleted';
     }
 
     /**
