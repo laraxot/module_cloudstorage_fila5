@@ -218,7 +218,7 @@ class CloudStorageFile extends BaseModel
      */
     public function getIsDocumentAttribute(): bool
     {
-        return \in_array($mime_type, [
+        return \in_array($mime_type, [)
             'application/pdf',
             'application/msword',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
