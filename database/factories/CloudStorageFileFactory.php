@@ -29,57 +29,57 @@ class CloudStorageFileFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $faker->randomElement([)
+            'name' => $this->faker->randomElement([
                 'document.pdf', 'image.jpg', 'video.mp4', 'archive.zip',
                 'spreadsheet.xlsx', 'presentation.pptx', 'code.js', 'data.json',
             ]),
-            'original_name' => sprintf('%s.%s', $faker->word())
-            'mime_type' => $faker->randomElement([)
+            'original_name' => sprintf('%s.%s', $this->faker->word()),
+            'mime_type' => $this->faker->randomElement([
                 'application/pdf', 'image/jpeg', 'video/mp4', 'application/zip',
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
                 'application/javascript', 'application/json',
             ]),
-            'size' => $faker->numberBetween(1024, 104857600)
-            'path' => sprintf('files/%s/%s.%s', $faker->date('Y/m/d'))
-            'storage_path' => sprintf('cloud/%s/%s.%s', $faker->date('Y/m/d'))
-            'provider' => $faker->randomElement(['google_drive', 'dropbox', 'aws_s3', 'azure_blob', 'local'])
-            'bucket' => $faker->optional()
-            'region' => $faker->optional()
-            'status' => $faker->randomElement(['pending', 'uploading', 'completed', 'failed', 'deleted'])
-            'is_public' => $faker->boolean(20)
-            'is_encrypted' => $faker->boolean(10)
-            'encryption_key' => $faker->optional()
-            'checksum' => $faker->sha1()
+            'size' => $this->faker->numberBetween(1024, 104857600),
+            'path' => sprintf('files/%s/%s.%s', $this->faker->date('Y/m/d')),
+            'storage_path' => sprintf('cloud/%s/%s.%s', $this->faker->date('Y/m/d')),
+            'provider' => $this->faker->randomElement(['google_drive', 'dropbox', 'aws_s3', 'azure_blob', 'local']),
+            'bucket' => $this->faker->optional(),
+            'region' => $this->faker->optional(),
+            'status' => $this->faker->randomElement(['pending', 'uploading', 'completed', 'failed', 'deleted']),
+            'is_public' => $this->faker->boolean(20),
+            'is_encrypted' => $this->faker->boolean(10),
+            'encryption_key' => $this->faker->optional(),
+            'checksum' => $this->faker->sha1(),
             'metadata' => [
-                'width' => $faker->optional()
-                'height' => $faker->optional()
-                'duration' => $faker->optional()
-                'bitrate' => $faker->optional()
-                'fps' => $faker->optional()
-                'compression' => $faker->optional()
-                'tags' => $faker->optional()
-                'description' => $faker->optional()
-                'author' => $faker->optional()
-                'copyright' => $faker->optional()
-                'license' => $faker->optional()
+                'width' => $this->faker->optional(),
+                'height' => $this->faker->optional(),
+                'duration' => $this->faker->optional(),
+                'bitrate' => $this->faker->optional(),
+                'fps' => $this->faker->optional(),
+                'compression' => $this->faker->optional(),
+                'tags' => $this->faker->optional(),
+                'description' => $this->faker->optional(),
+                'author' => $this->faker->optional(),
+                'copyright' => $this->faker->optional(),
+                'license' => $this->faker->optional(),
             ],
             'settings' => [
-                'auto_delete' => $faker->boolean(30)
-                'delete_after_days' => $faker->optional()
-                'backup_enabled' => $faker->boolean(70)
-                'compression_enabled' => $faker->boolean(40)
-                'cdn_enabled' => $faker->boolean(60)
-                'virus_scan_enabled' => $faker->boolean(80)
-                'watermark_enabled' => $faker->boolean(20)
-                'thumbnail_enabled' => $faker->boolean(90)
+                'auto_delete' => $this->faker->boolean(30),
+                'delete_after_days' => $this->faker->optional(),
+                'backup_enabled' => $this->faker->boolean(70),
+                'compression_enabled' => $this->faker->boolean(40),
+                'cdn_enabled' => $this->faker->boolean(60),
+                'virus_scan_enabled' => $this->faker->boolean(80),
+                'watermark_enabled' => $this->faker->boolean(20),
+                'thumbnail_enabled' => $this->faker->boolean(90),
             ],
-            'user_id' => $faker->numberBetween(1, 100)
-            'folder_id' => $faker->optional()
-            'uploaded_at' => $faker->dateTimeBetween('-1 month', 'now')
-            'last_accessed_at' => $faker->optional()
-            'download_count' => $faker->numberBetween(0, 1000)
-            'view_count' => $faker->numberBetween(0, 5000)
+            'user_id' => $this->faker->numberBetween(1, 100),
+            'folder_id' => $this->faker->optional(),
+            'uploaded_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
+            'last_accessed_at' => $this->faker->optional(),
+            'download_count' => $this->faker->numberBetween(0, 1000),
+            'view_count' => $this->faker->numberBetween(0, 5000),
         ];
     }
 
@@ -88,7 +88,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function pending(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'status' => 'pending',
             'uploaded_at' => null,
         ]);
@@ -99,7 +99,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function uploading(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'status' => 'uploading',
             'uploaded_at' => null,
         ]);
@@ -110,9 +110,9 @@ class CloudStorageFileFactory extends Factory
      */
     public function completed(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'status' => 'completed',
-            'uploaded_at' => $faker->dateTimeBetween('-1 month', 'now')
+            'uploaded_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
         ]);
     }
 
@@ -121,7 +121,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function failed(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'status' => 'failed',
             'uploaded_at' => null,
         ]);
@@ -132,7 +132,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function deleted(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'status' => 'deleted',
         ]);
     }
@@ -142,7 +142,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function public(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'is_public' => true,
         ]);
     }
@@ -152,7 +152,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function private(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'is_public' => false,
         ]);
     }
@@ -162,9 +162,9 @@ class CloudStorageFileFactory extends Factory
      */
     public function encrypted(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'is_encrypted' => true,
-            'encryption_key' => $faker->sha1()
+            'encryption_key' => $this->faker->sha1(),
         ]);
     }
 
@@ -173,7 +173,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function unencrypted(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'is_encrypted' => false,
             'encryption_key' => null,
         ]);
@@ -184,8 +184,8 @@ class CloudStorageFileFactory extends Factory
      */
     public function small(): static
     {
-        return $this->state(fn (array $attributes))
-            'size' => $faker->numberBetween(1024, 1048576)
+        return $this->state(fn (array $attributes): array => [
+            'size' => $this->faker->numberBetween(1024, 1048576),
         ]);
     }
 
@@ -194,8 +194,8 @@ class CloudStorageFileFactory extends Factory
      */
     public function large(): static
     {
-        return $this->state(fn (array $attributes))
-            'size' => $faker->numberBetween(104857600, 1073741824)
+        return $this->state(fn (array $attributes): array => [
+            'size' => $this->faker->numberBetween(104857600, 1073741824),
         ]);
     }
 
@@ -204,12 +204,12 @@ class CloudStorageFileFactory extends Factory
      */
     public function image(): static
     {
-        return $this->state(fn (array $attributes))
-            'name' => $faker->randomElement(['photo.jpg', 'image.png', 'screenshot.gif', 'banner.webp'])
-            'mime_type' => $faker->randomElement(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
-            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [)
-                'width' => $faker->numberBetween(100, 4000)
-                'height' => $faker->numberBetween(100, 4000)
+        return $this->state(fn (array $attributes): array => [
+            'name' => $this->faker->randomElement(['photo.jpg', 'image.png', 'screenshot.gif', 'banner.webp']),
+            'mime_type' => $this->faker->randomElement(['image/jpeg', 'image/png', 'image/gif', 'image/webp']),
+            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
+                'width' => $this->faker->numberBetween(100, 4000),
+                'height' => $this->faker->numberBetween(100, 4000),
             ]),
         ]);
     }
@@ -219,13 +219,13 @@ class CloudStorageFileFactory extends Factory
      */
     public function video(): static
     {
-        return $this->state(fn (array $attributes))
-            'name' => $faker->randomElement(['video.mp4', 'movie.avi', 'clip.mov', 'presentation.webm'])
-            'mime_type' => $faker->randomElement(['video/mp4', 'video/avi', 'video/quicktime', 'video/webm'])
-            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [)
-                'duration' => $faker->numberBetween(1, 3600)
-                'bitrate' => $faker->numberBetween(128, 320)
-                'fps' => $faker->randomFloat(1, 24, 60)
+        return $this->state(fn (array $attributes): array => [
+            'name' => $this->faker->randomElement(['video.mp4', 'movie.avi', 'clip.mov', 'presentation.webm']),
+            'mime_type' => $this->faker->randomElement(['video/mp4', 'video/avi', 'video/quicktime', 'video/webm']),
+            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
+                'duration' => $this->faker->numberBetween(1, 3600),
+                'bitrate' => $this->faker->numberBetween(128, 320),
+                'fps' => $this->faker->randomFloat(1, 24, 60),
             ]),
         ]);
     }
@@ -235,9 +235,9 @@ class CloudStorageFileFactory extends Factory
      */
     public function document(): static
     {
-        return $this->state(fn (array $attributes))
-            'name' => $faker->randomElement(['report.pdf', 'contract.docx', 'presentation.pptx', 'data.xlsx'])
-            'mime_type' => $faker->randomElement([)
+        return $this->state(fn (array $attributes): array => [
+            'name' => $this->faker->randomElement(['report.pdf', 'contract.docx', 'presentation.pptx', 'data.xlsx']),
+            'mime_type' => $this->faker->randomElement([
                 'application/pdf',
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
@@ -251,7 +251,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function forProvider(string $provider): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'provider' => $provider,
         ]);
     }
@@ -261,7 +261,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function forUser(int $userId): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'user_id' => $userId,
         ]);
     }
@@ -271,7 +271,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function inFolder(int $folderId): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'folder_id' => $folderId,
         ]);
     }
@@ -281,7 +281,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function withSize(int $size): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'size' => $size,
         ]);
     }
@@ -291,7 +291,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function withMimeType(string $mimeType): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'mime_type' => $mimeType,
         ]);
     }
@@ -301,7 +301,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function withStatus(string $status): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'status' => $status,
         ]);
     }
@@ -311,9 +311,9 @@ class CloudStorageFileFactory extends Factory
      */
     public function popular(): static
     {
-        return $this->state(fn (array $attributes))
-            'download_count' => $faker->numberBetween(1000, 10000)
-            'view_count' => $faker->numberBetween(5000, 50000)
+        return $this->state(fn (array $attributes): array => [
+            'download_count' => $this->faker->numberBetween(1000, 10000),
+            'view_count' => $this->faker->numberBetween(5000, 50000),
         ]);
     }
 
@@ -322,7 +322,7 @@ class CloudStorageFileFactory extends Factory
      */
     public function unpopular(): static
     {
-        return $this->state(fn (array $attributes))
+        return $this->state(fn (array $attributes): array => [
             'download_count' => 0,
             'view_count' => 0,
         ]);
@@ -333,8 +333,8 @@ class CloudStorageFileFactory extends Factory
      */
     public function recentlyAccessed(): static
     {
-        return $this->state(fn (array $attributes))
-            'last_accessed_at' => $faker->dateTimeBetween('-1 week', 'now')
+        return $this->state(fn (array $attributes): array => [
+            'last_accessed_at' => $this->faker->dateTimeBetween('-1 week', 'now'),
         ]);
     }
 
@@ -343,8 +343,8 @@ class CloudStorageFileFactory extends Factory
      */
     public function notRecentlyAccessed(): static
     {
-        return $this->state(fn (array $attributes))
-            'last_accessed_at' => $faker->dateTimeBetween('-6 months', '-1 month')
+        return $this->state(fn (array $attributes): array => [
+            'last_accessed_at' => $this->faker->dateTimeBetween('-6 months', '-1 month'),
         ]);
     }
 }
