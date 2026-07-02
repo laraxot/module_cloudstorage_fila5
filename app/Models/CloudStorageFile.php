@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Modules\CloudStorage\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\CloudStorage\Database\Factories\CloudStorageFileFactory;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
 /**
@@ -60,27 +62,46 @@ class CloudStorageFile extends BaseModel
         'encryption_key',
     ];
 
+    /**
+     * @return BelongsTo<Model&UserContract, $this>
+     */
     public function user(): BelongsTo
     {
         $userClass = XotData::make()->getUserClass();
         return $this->belongsTo($userClass);
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     public function scopeStatus(Builder $query, string $status): Builder
     {
         return $query->where('status', $status);
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     public function scopeProvider(Builder $query, string $provider): Builder
     {
         return $query->where('provider', $provider);
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     public function scopePublic(Builder $query): Builder
     {
         return $query->where('is_public', true);
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     public function scopeCompleted(Builder $query): Builder
     {
         return $query->where('status', 'completed');
