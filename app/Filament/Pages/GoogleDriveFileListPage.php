@@ -35,10 +35,10 @@ class GoogleDriveFileListPage extends Page
 
     public function mount(GoogleDriveService $driveService): void
     {
-        $driveService = $driveService;
+        $this->driveService = $driveService;
 
         dddx([
-            'listFiles' => $driveService->getFiles()
+            'listFiles' => $driveService->getFiles(),
         ]);
     }
 
@@ -73,9 +73,12 @@ class GoogleDriveFileListPage extends Page
             ]);
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     protected function getFilesQuery(): array
     {
-        return $driveService->getFiles();
+        return $this->driveService->getFiles();
     }
 
     /*

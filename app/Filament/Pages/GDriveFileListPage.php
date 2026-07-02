@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace Modules\CloudStorage\Filament\Pages;
 
 use Filament\Pages\Page;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -18,13 +19,16 @@ class GDriveFileListPage extends Page implements HasTable
 
     protected static ?string $navigationLabel = 'File di Google Drive';
 
+    /**
+     * @return array<string, Column>
+     */
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('name')->label('Nome File')->sortable()->searchable(),
-            TextColumn::make('mimeType')->label('Tipo'),
-            TextColumn::make('modifiedTime')->label('Modificato')->dateTime(),
-            TextColumn::make('size')
+            'name' => TextColumn::make('name')->label('Nome File')->sortable()->searchable(),
+            'mimeType' => TextColumn::make('mimeType')->label('Tipo'),
+            'modifiedTime' => TextColumn::make('modifiedTime')->label('Modificato')->dateTime(),
+            'size' => TextColumn::make('size')
                 ->label('Dimensione')
                 ->formatStateUsing(fn ($state) => is_numeric($state) ? number_format((float) $state / 1024, 2).' KB' : 'N/A'),
         ];
