@@ -22,9 +22,24 @@ class GoogleDriveFileListPage extends Page
     /** @var array<int, mixed> */
     protected array $files = [];
 
+<<<<<<< HEAD
     public function mount(): void
     {
         $this->files = app(GetGoogleDriveFilesAction::class)->execute();
+=======
+    public function setUp(): void
+    {
+        dddx('c');
+    }
+
+    public function mount(): void
+    {
+        $this->files = app(GetGoogleDriveFilesAction::class)->execute();
+
+        dddx([
+            'listFiles' => $this->files,
+        ]);
+>>>>>>> e2078c7 (refactor: migrate GoogleDriveService to GetGoogleDriveFilesAction (QueueableAction))
     }
 
     public function table(Table $table): Table
