@@ -22,18 +22,9 @@ class GoogleDriveFileListPage extends Page
     /** @var array<int, mixed> */
     protected array $files = [];
 
-    public function setUp(): void
-    {
-        dddx('c');
-    }
-
     public function mount(): void
     {
         $this->files = app(GetGoogleDriveFilesAction::class)->execute();
-
-        dddx([
-            'listFiles' => $this->files,
-        ]);
     }
 
     public function table(Table $table): Table
