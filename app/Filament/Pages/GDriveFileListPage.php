@@ -36,8 +36,7 @@ class GDriveFileListPage extends Page implements HasTable
     /*
     public function getTableRecords(): LengthAwarePaginator
     {
-        $driveService = app(GoogleDriveService::class);
-        $files = collect($driveService->getFiles());
+        $files = collect(app(\Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction::class)->execute());
 
         // Paginazione manuale (10 risultati per pagina)
         $perPage = 10;

@@ -8,7 +8,7 @@ use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Modules\CloudStorage\Services\GoogleDriveService;
+use Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction;
 
 // implements HasTable
 
@@ -19,26 +19,20 @@ class GoogleDriveFileListPage extends Page
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cloud';
 
-    protected GoogleDriveService $driveService;
-
-    /*
-    public function __construct()
-    {
-        dddx('b');
-    }
-        */
+    /** @var array<int, mixed> */
+    protected array $files = [];
 
     public function setUp(): void
     {
         dddx('c');
     }
 
-    public function mount(GoogleDriveService $driveService): void
+    public function mount(): void
     {
-        $this->driveService = $driveService;
+        $this->files = app(GetGoogleDriveFilesAction::class)->execute();
 
         dddx([
-            'listFiles' => $driveService->getFiles(),
+            'listFiles' => $this->files,
         ]);
     }
 
@@ -78,7 +72,7 @@ class GoogleDriveFileListPage extends Page
      */
     protected function getFilesQuery(): array
     {
-        return $this->driveService->getFiles();
+        return $this->files;
     }
 
     /*
