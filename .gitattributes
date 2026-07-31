@@ -1,12 +1,13 @@
 * text=auto
+<<<<<<< HEAD
 
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
-
 CHANGELOG.md export-ignore
-
 *.psd !text !filter !merge !diff
+=======
+>>>>>>> c167970 (chore: add missing 'text=auto' base line to .gitattributes)
 *.png !text !filter !merge !diff
 *.svg !text !filter !merge !diff
 *.jpg !text !filter !merge !diff
