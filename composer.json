@@ -37,6 +37,6 @@
     "require-dev": {
         "driftingly/rector-laravel": "^2.5",
         "symplify/phpstan-rules": "^14.10",
-        "rector/rector": "^2.5"
+        "rector/rector": "^2.6"
     }
 }
