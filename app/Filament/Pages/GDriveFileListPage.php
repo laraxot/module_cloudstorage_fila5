@@ -5,13 +5,13 @@ declare(strict_types=1);
 
 namespace Modules\CloudStorage\Filament\Pages;
 
-use Filament\Pages\Page;
+use Modules\Xot\Filament\Pages\XotBasePage;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 
-class GDriveFileListPage extends Page implements HasTable
+class GDriveFileListPage extends XotBasePage implements HasTable
 {
     use InteractsWithTable;
 

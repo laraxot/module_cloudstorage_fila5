@@ -1,3 +1,18 @@
+---
+title: "CloudStorage — documentazione del modulo"
+description: "Documentazione del modulo CloudStorage: integrazione storage remoto."
+module: CloudStorage
+tags: [cloudstorage, documentazione, modulo, laraxot]
+status: active
+repository: https://github.com/laraxot/module_cloudstorage_fila5
+related:
+  - ./00-index.md
+  - ./index.md
+  - ../../../../docs/wiki/audits/docs-redundancy-audit.md
+issues: https://github.com/laraxot/module_cloudstorage_fila5/issues
+discussions: https://github.com/laraxot/module_cloudstorage_fila5/discussions
+---
+
 # CloudStorage Module
 
 [![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)
