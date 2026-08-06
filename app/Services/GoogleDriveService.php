@@ -19,17 +19,17 @@ class GoogleDriveService
 
     public function __construct()
     {
-        // @var mixed client = new Client;
+        $client = new Client;
         Assert::string($client_id = config('services.google.client_id'));
         Assert::string($client_secret = config('services.google.client_secret'));
         Assert::string($redirect = config('services.google.redirect'));
         Assert::isArray($scopes = config('services.google.scopes'));
 
-        // @var mixed client->setClientId($client_id;
-        // @var mixed client->setClientSecret($client_secret;
-        // @var mixed client->setRedirectUri($redirect;
-        // @var mixed client->setScopes($scopes;
-        // @var mixed client->setAccessType('offline';
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect);
+        $client->setScopes($scopes);
+        $client->setAccessType('offline');
 
         $user = auth()->user();
         if ($user === null) {
@@ -44,11 +44,11 @@ class GoogleDriveService
         if (method_exists($user, 'getProviderField')) {
             $token = $user->getProviderField('google', 'token');
             if (is_string($token) || is_array($token)) {
-                // @var mixed client->setAccessToken($token;
+                $client->setAccessToken($token);
             }
         }
 
-        // @var mixed driveService = new Drive($this->client;
+        $driveService = new Drive($this->client);
     }
 
     /**
@@ -58,7 +58,7 @@ class GoogleDriveService
      */
     public function getFiles(): array
     {
-        $filesResource = // @var mixed driveService->files;
+        $filesResource = $driveService->files;
         if (! is_object($filesResource)) {
             return [];
         }
