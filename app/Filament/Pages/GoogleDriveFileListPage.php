@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Modules\CloudStorage\Filament\Pages;
 
 use Filament\Actions\Action;
-use Filament\Pages\Page;
+use Modules\Xot\Filament\Pages\XotBasePage;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction;
 
 // implements HasTable
 
-class GoogleDriveFileListPage extends Page
+class GoogleDriveFileListPage extends XotBasePage
 {
     // use InteractsWithTable;
     protected string $view = 'cloudstorage::filament.pages.google-drive-file-list';
