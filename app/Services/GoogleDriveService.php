@@ -48,7 +48,8 @@ class GoogleDriveService
             }
         }
 
-        $driveService = new Drive($this->client);
+        $this->client = $client;
+        $this->driveService = new Drive($this->client);
     }
 
     /**
@@ -58,7 +59,7 @@ class GoogleDriveService
      */
     public function getFiles(): array
     {
-        $filesResource = $driveService->files;
+        $filesResource = $this->driveService->files;
         if (! is_object($filesResource)) {
             return [];
         }
