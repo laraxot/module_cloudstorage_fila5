@@ -62,7 +62,11 @@ class CloudStorageFile extends BaseModel
         'encryption_key',
     ];
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return BelongsTo<Model&UserContract, $this>
      */
     public function user(): BelongsTo
@@ -71,7 +75,11 @@ class CloudStorageFile extends BaseModel
         return $this->belongsTo($userClass);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  Builder<static>  $query
      * @return Builder<static>
      */
@@ -80,7 +88,11 @@ class CloudStorageFile extends BaseModel
         return $query->where('status', $status);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  Builder<static>  $query
      * @return Builder<static>
      */
@@ -89,7 +101,11 @@ class CloudStorageFile extends BaseModel
         return $query->where('provider', $provider);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  Builder<static>  $query
      * @return Builder<static>
      */
@@ -98,7 +114,11 @@ class CloudStorageFile extends BaseModel
         return $query->where('is_public', true);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param  Builder<static>  $query
      * @return Builder<static>
      */

@@ -19,7 +19,11 @@ class GDriveFileListPage extends XotBasePage implements HasTable
 
     protected static ?string $navigationLabel = 'File di Google Drive';
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<string, Column>
      */
     public function getTableColumns(): array
@@ -36,7 +40,11 @@ class GDriveFileListPage extends XotBasePage implements HasTable
     /*
     public function getTableRecords(): LengthAwarePaginator
     {
+<<<<<<< HEAD
        $files = collect(app(\Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction::class)->execute());
+=======
+        $files = collect(app(\Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction::class)->execute());
+>>>>>>> laraxot/dev
 
         // Paginazione manuale (10 risultati per pagina)
         $perPage = 10;

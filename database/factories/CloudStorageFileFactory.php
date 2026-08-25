@@ -34,7 +34,11 @@ class CloudStorageFileFactory extends Factory
                 'document.pdf', 'image.jpg', 'video.mp4', 'archive.zip',
                 'spreadsheet.xlsx', 'presentation.pptx', 'code.js', 'data.json',
             ]),
+<<<<<<< HEAD
            'original_name' => sprintf('%s.%s', $this->faker->word(), SafeStringCastAction::cast($this->faker->fileExtension())),
+=======
+            'original_name' => sprintf('%s.%s', $this->faker->word(), SafeStringCastAction::cast($this->faker->fileExtension())),
+>>>>>>> laraxot/dev
             'mime_type' => $this->faker->randomElement([
                 'application/pdf', 'image/jpeg', 'video/mp4', 'application/zip',
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -42,7 +46,11 @@ class CloudStorageFileFactory extends Factory
                 'application/javascript', 'application/json',
             ]),
             'size' => $this->faker->numberBetween(1024, 104857600),
+<<<<<<< HEAD
            'path' => sprintf('files/%s/%s', $this->faker->date('Y/m/d'), $this->faker->uuid()),
+=======
+            'path' => sprintf('files/%s/%s', $this->faker->date('Y/m/d'), $this->faker->uuid()),
+>>>>>>> laraxot/dev
             'storage_path' => sprintf('cloud/%s/%s', $this->faker->date('Y/m/d'), $this->faker->uuid()),
             'provider' => $this->faker->randomElement(['google_drive', 'dropbox', 'aws_s3', 'azure_blob', 'local']),
             'bucket' => $this->faker->optional(),
