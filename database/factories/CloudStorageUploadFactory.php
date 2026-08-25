@@ -34,7 +34,11 @@ class CloudStorageUploadFactory extends Factory
             'file_id' => $this->faker->numberBetween(1, 10000),
             'provider_id' => $this->faker->numberBetween(1, 100),
             'folder_id' => $this->faker->optional(),
+<<<<<<< HEAD
            'original_filename' => sprintf('%s.%s', SafeStringCastAction::cast($this->faker->word()), SafeStringCastAction::cast($this->faker->fileExtension())),
+=======
+            'original_filename' => sprintf('%s.%s', SafeStringCastAction::cast($this->faker->word()), SafeStringCastAction::cast($this->faker->fileExtension())),
+>>>>>>> laraxot/dev
             'temp_filename' => $this->faker->uuid(),
             'file_size' => $this->faker->numberBetween(1024, 1073741824),
             'mime_type' => $this->faker->randomElement(['image/jpeg', 'image/png', 'application/pdf', 'text/plain', 'video/mp4']),

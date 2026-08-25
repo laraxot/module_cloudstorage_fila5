@@ -19,7 +19,11 @@ class GoogleDriveFileListPage extends XotBasePage
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cloud';
 
+<<<<<<< HEAD
    /** @var array<int, mixed> */
+=======
+    /** @var array<int, mixed> */
+>>>>>>> laraxot/dev
     protected array $files = [];
 
     public function mount(): void
@@ -58,7 +62,11 @@ class GoogleDriveFileListPage extends XotBasePage
             ]);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<int, mixed>
      */
     protected function getFilesQuery(): array
