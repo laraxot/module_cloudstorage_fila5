@@ -30,13 +30,13 @@
             "Modules\\CloudStorage\\Tests\\": "tests/"
         }
     },
-    "require": {
+"require": {
         "spatie/laravel-google-cloud-storage": "^2.3",
         "google/apiclient": "^2.18"
     },
     "require-dev": {
-        "driftingly/rector-laravel": "^2.2",
-        "symplify/phpstan-rules": "^14.9",
-        "rector/rector": "^2.3"
+        "driftingly/rector-laravel": "^2.5",
+        "symplify/phpstan-rules": "^14.10",
+        "rector/rector": "^2.6"
     }
 }

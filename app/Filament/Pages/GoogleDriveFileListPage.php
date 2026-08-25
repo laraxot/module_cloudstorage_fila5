@@ -5,41 +5,26 @@ declare(strict_types=1);
 namespace Modules\CloudStorage\Filament\Pages;
 
 use Filament\Actions\Action;
-use Filament\Pages\Page;
+use Modules\Xot\Filament\Pages\XotBasePage;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Modules\CloudStorage\Services\GoogleDriveService;
+use Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction;
 
 // implements HasTable
 
-class GoogleDriveFileListPage extends Page
+class GoogleDriveFileListPage extends XotBasePage
 {
     // use InteractsWithTable;
     protected string $view = 'cloudstorage::filament.pages.google-drive-file-list';
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cloud';
 
-    protected GoogleDriveService $driveService;
+   /** @var array<int, mixed> */
+    protected array $files = [];
 
-    /*
-    public function __construct()
+    public function mount(): void
     {
-        dddx('b');
-    }
-        */
-
-    public function setUp(): void
-    {
-        dddx('c');
-    }
-
-    public function mount(GoogleDriveService $driveService): void
-    {
-        $driveService = $driveService;
-
-        dddx([
-            'listFiles' => $driveService->getFiles()
-        ]);
+        $this->files = app(GetGoogleDriveFilesAction::class)->execute();
     }
 
     public function table(Table $table): Table
@@ -73,9 +58,12 @@ class GoogleDriveFileListPage extends Page
             ]);
     }
 
+   /**
+     * @return array<int, mixed>
+     */
     protected function getFilesQuery(): array
     {
-        return $driveService->getFiles();
+        return $this->files;
     }
 
     /*
