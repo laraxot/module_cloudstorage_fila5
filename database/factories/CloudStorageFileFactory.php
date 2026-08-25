@@ -6,6 +6,7 @@ namespace Modules\CloudStorage\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\CloudStorage\Models\CloudStorageFile;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * CloudStorageFile factory.
@@ -33,7 +34,7 @@ class CloudStorageFileFactory extends Factory
                 'document.pdf', 'image.jpg', 'video.mp4', 'archive.zip',
                 'spreadsheet.xlsx', 'presentation.pptx', 'code.js', 'data.json',
             ]),
-            'original_name' => sprintf('%s.%s', $this->faker->word()),
+           'original_name' => sprintf('%s.%s', $this->faker->word(), SafeStringCastAction::cast($this->faker->fileExtension())),
             'mime_type' => $this->faker->randomElement([
                 'application/pdf', 'image/jpeg', 'video/mp4', 'application/zip',
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -41,8 +42,8 @@ class CloudStorageFileFactory extends Factory
                 'application/javascript', 'application/json',
             ]),
             'size' => $this->faker->numberBetween(1024, 104857600),
-            'path' => sprintf('files/%s/%s.%s', $this->faker->date('Y/m/d')),
-            'storage_path' => sprintf('cloud/%s/%s.%s', $this->faker->date('Y/m/d')),
+           'path' => sprintf('files/%s/%s', $this->faker->date('Y/m/d'), $this->faker->uuid()),
+            'storage_path' => sprintf('cloud/%s/%s', $this->faker->date('Y/m/d'), $this->faker->uuid()),
             'provider' => $this->faker->randomElement(['google_drive', 'dropbox', 'aws_s3', 'azure_blob', 'local']),
             'bucket' => $this->faker->optional(),
             'region' => $this->faker->optional(),

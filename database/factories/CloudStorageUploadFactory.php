@@ -6,6 +6,7 @@ namespace Modules\CloudStorage\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\CloudStorage\Models\CloudStorageUpload;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * CloudStorageUpload factory.
@@ -33,7 +34,7 @@ class CloudStorageUploadFactory extends Factory
             'file_id' => $this->faker->numberBetween(1, 10000),
             'provider_id' => $this->faker->numberBetween(1, 100),
             'folder_id' => $this->faker->optional(),
-            'original_filename' => sprintf('%s.%s', (string) $this->faker->word()),
+           'original_filename' => sprintf('%s.%s', SafeStringCastAction::cast($this->faker->word()), SafeStringCastAction::cast($this->faker->fileExtension())),
             'temp_filename' => $this->faker->uuid(),
             'file_size' => $this->faker->numberBetween(1024, 1073741824),
             'mime_type' => $this->faker->randomElement(['image/jpeg', 'image/png', 'application/pdf', 'text/plain', 'video/mp4']),
