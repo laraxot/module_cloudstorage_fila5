@@ -42,13 +42,13 @@ class GoogleDriveFileListPage extends XotBasePage
                     ->dateTime('Y-m-d H:i:s'),
 
                 TextColumn::make('size')
-                    ->formatStateUsing(fn ($state): string => is_numeric($state) ? $this->formatFileSize((int) $state) : ''),
+                    ->formatStateUsing(fn (mixed $state): string => is_numeric($state) ? $this->formatFileSize((int) $state) : ''),
             ])
             ->recordActions([
                 Action::make('view')
                     ->icon('heroicon-o-eye')
                     ->tooltip(__('View File'))
-                    ->url(fn ($record) => is_array($record) && isset($record['webViewLink']) ? $record['webViewLink'] : '#', true),
+                    ->url(fn (mixed $record) => is_array($record) && isset($record['webViewLink']) ? $record['webViewLink'] : '#', true),
                 /*
                 Action::make('share')
                     ->icon('heroicon-o-share')
