@@ -30,7 +30,7 @@
             "Modules\\CloudStorage\\Tests\\": "tests/"
         }
     },
-    "require": {
+"require": {
         "spatie/laravel-google-cloud-storage": "^2.3",
         "google/apiclient": "^2.18"
     },
