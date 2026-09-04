@@ -42,7 +42,7 @@ class GoogleDriveFileListPage extends XotBasePage
                     ->dateTime('Y-m-d H:i:s'),
 
                 TextColumn::make('size')
-                    ->formatStateUsing(fn (mixed $state): string => is_numeric($state) ? $this->formatFileSize((int) $state) : ''),
+                    ->formatStateUsing(fn (int|float|string|null $state): string => is_numeric($state) ? $this->formatFileSize((int) $state) : ''),
             ])
             ->recordActions([
                 Action::make('view')

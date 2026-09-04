@@ -30,7 +30,7 @@ class GDriveFileListPage extends XotBasePage implements HasTable
             'modifiedTime' => TextColumn::make('modifiedTime')->label('Modificato')->dateTime(),
             'size' => TextColumn::make('size')
                 ->label('Dimensione')
-                ->formatStateUsing(fn (mixed $state) => is_numeric($state) ? number_format((float) $state / 1024, 2).' KB' : 'N/A'),
+                ->formatStateUsing(fn (int|float|string|null $state) => is_numeric($state) ? number_format((float) $state / 1024, 2).' KB' : 'N/A'),
         ];
     }
     /*

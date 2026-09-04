@@ -8,6 +8,14 @@ namespace Modules\CloudStorage\Models;
  * CloudStorageShare Model.
  *
  * Represents file/folder sharing permissions and links.
+ *
+ * @property-read \Modules\Quaeris\Models\Profile|null $creator
+ * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageShare newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageShare newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageShare query()
+ * @mixin \Eloquent
  */
 class CloudStorageShare extends BaseModel
 {

@@ -30,8 +30,8 @@ use Modules\Xot\Datas\XotData;
  * @property bool $is_encrypted
  * @property string|null $encryption_key
  * @property string $checksum
- * @property array<string, mixed> $metadata
- * @property array<string, mixed> $settings
+ * @property array<string, string|int|float|bool|null|array<string, mixed>> $metadata
+ * @property array<string, string|int|float|bool|null|array<string, mixed>> $settings
  * @property int $user_id
  * @property int|null $folder_id
  * @property Carbon|null $uploaded_at
@@ -42,12 +42,23 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static CloudStorageFileFactory factory($count = null, $state = [])
  * @method static Builder|CloudStorageFile newModelQuery()
  * @method static Builder|CloudStorageFile newQuery()
  * @method static Builder|CloudStorageFile query()
- *
+ * @property-read \Modules\Quaeris\Models\Profile|null $creator
+ * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read string $extension
+ * @property-read string $human_readable_size
+ * @property-read bool $is_document
+ * @property-read bool $is_image
+ * @property-read bool $is_video
+ * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @property-read \Modules\Quaeris\Models\User|null $user
+ * @method static Builder<static>|CloudStorageFile completed()
+ * @method static Builder<static>|CloudStorageFile provider(string $provider)
+ * @method static Builder<static>|CloudStorageFile public()
+ * @method static Builder<static>|CloudStorageFile status(string $status)
  * @mixin \Eloquent
  */
 class CloudStorageFile extends BaseModel

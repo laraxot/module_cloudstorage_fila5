@@ -8,6 +8,14 @@ namespace Modules\CloudStorage\Models;
  * CloudStorageUpload Model.
  *
  * Represents file upload sessions and chunked upload tracking.
+ *
+ * @property-read \Modules\Quaeris\Models\Profile|null $creator
+ * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageUpload newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageUpload newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageUpload query()
+ * @mixin \Eloquent
  */
 class CloudStorageUpload extends BaseModel
 {
