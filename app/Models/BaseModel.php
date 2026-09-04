@@ -20,5 +20,5 @@ abstract class BaseModel extends XotBaseModel
      *
      * @var string
      */
-    protected $connection = 'cloudstorage';
+    protected $connection = 'cloud_storage';
 }
