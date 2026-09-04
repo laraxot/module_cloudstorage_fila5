@@ -50,3 +50,14 @@ task and pre-existing debt.
 
 **Git**: no application code touched, so no functional diff to commit beyond this
 file and the accompanying story file.
+
+## 2026-09-04 — connessione DB errata
+
+`BaseModel.php` dichiarava `protected $connection = 'cloudstorage'`
+(senza underscore); `TenantServiceProvider` deriva la connessione reale
+da `Module::getSnakeName()`, che per "CloudStorage" produce
+`'cloud_storage'` (verificato via tinker). Mismatch: tutti i model
+(CloudStorageFile/Share/Upload/Quota/Provider) fallivano con "Database
+connection [cloudstorage] not configured." al primo utilizzo (trovato
+con `php artisan ide-helper:models --nowrite`). Corretto in
+`app/Models/BaseModel.php`.
