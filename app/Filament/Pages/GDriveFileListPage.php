@@ -18,21 +18,6 @@ class GDriveFileListPage extends XotBasePage implements HasTable
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cloud';
 
     protected static ?string $navigationLabel = 'File di Google Drive';
-
-    /**
-     * @return array<string, Column>
-     */
-    public function getTableColumns(): array
-    {
-        return [
-            'name' => TextColumn::make('name')->label('Nome File')->sortable()->searchable(),
-            'mimeType' => TextColumn::make('mimeType')->label('Tipo'),
-            'modifiedTime' => TextColumn::make('modifiedTime')->label('Modificato')->dateTime(),
-            'size' => TextColumn::make('size')
-                ->label('Dimensione')
-                ->formatStateUsing(fn (int|float|string|null $state) => is_numeric($state) ? number_format((float) $state / 1024, 2).' KB' : 'N/A'),
-        ];
-    }
     /*
     public function getTableRecords(): LengthAwarePaginator
     {

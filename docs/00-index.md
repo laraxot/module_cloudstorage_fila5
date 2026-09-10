@@ -41,5 +41,5 @@
 
 Prima di modificare codice: ragionare, studiare i docs del modulo, aggiornare docs/rules/memory/skills.
 
-- Riferimento globale: [Pre-Edit Docs-First Rule](./docs/rules/pre-edit-docs-first-rule.md)
-- Memory: [Pre-Edit Docs-First Memory](./docs/memory/pre-edit-docs-first-memory.md)
+- Riferimento globale: [Pre-Edit Docs-First Rule](../../../../bashscripts/ai/wiki/rules/pre-edit-docs-first.md)
+- Memory: [Pre-Edit Docs-First Memory](../../../../bashscripts/ai/wiki/rules/pre-edit-docs-first.md)
