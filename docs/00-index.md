@@ -12,7 +12,7 @@
 ## 🏗️ Architettura
 
 - **[Wiki Index](./wiki/index.md)** - Struttura e concetti chiave.
-- **[Schema](./wiki/schema.md)** - Architettura dati.
+- **[Tasks](./tasks/tasks-index.md)** - Indice delle task del modulo.
 - **[BMAD Method](./wiki/bmad-method.md)** - Applicazione del metodo BMAD.
 
 ## ☁️ Integrazione Google Drive
