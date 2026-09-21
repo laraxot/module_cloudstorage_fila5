@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\CloudStorage\Models;
 
+use Modules\Quaeris\Models\Profile;
+
 /**
  * CloudStorageProvider Model.
  *
  * Represents a cloud storage provider configuration.
  *
- * @property-read \Modules\Quaeris\Models\Profile|null $creator
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
- * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageProvider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageProvider newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageProvider query()
+ *
  * @mixin \Eloquent
  */
 class CloudStorageProvider extends BaseModel

@@ -2,60 +2,42 @@
 title: "CloudStorage — mixed type reduction audit"
 status: done
 module: CloudStorage
-date: 2026-09-04
 ---
 
 # Story: CloudStorage — `mixed` type reduction audit
 
-**Fase BMAD**: Refactor / qualità (audit + eventuale correzione tipi, nessuna modifica
-funzionale).
+**Fase BMAD**: Refactor / qualita (type-safety). Nessuna pagina legal, nessun User 10.4.
 
 **Contesto**: convenzione di progetto — "cerchiamo di non usare mixed, quando lo
 troviamo cerchiamo di sostituirlo con qualcosa di adeguato" — applicata a
-`Modules/CloudStorage`, modulo piccolo (10 file con `mixed`), scelto per un passaggio
-completo e accurato.
+`Modules/CloudStorage`, scope `app/` (ultima spiaggia = JSON / metadata / config)
++ `declare(strict_types=1)` su ogni `.php` / `.blade.php` sprovvisto (prime 25 righe).
 
-**Azione**: censiti tutti i 21 usi di `mixed` (nativi e in docblock) su 10 file
-tramite `grep -rnE '\bmixed\b' Modules/CloudStorage --include="*.php"`. Ogni
-occorrenza è stata letta nel contesto reale (chiamante, tipo di ritorno vendor,
-consumer a valle) prima di decidere se sostituirla.
+**Perche'**: `GetGoogleDriveFilesAction` chiedeva gia' un set chiuso di campi Drive
+(`id`, `name`, `mimeType`, `modifiedTime`, `size`) e la pagina consuma anche
+`webViewLink`. Restituire `array<int, mixed>` nascondeva uno shape file evidente.
+Le colonne JSON `metadata`/`settings` restano polimorfe: li `mixed` e' onesto.
 
-**Esito**: **0 sostituzioni** — tutte le 21 occorrenze rientrano in una delle
-eccezioni esplicite del task (dettaglio per-file in `docs/coverage.md`, sezione
-2026-09-04):
+**Modifiche applicate**:
+- `app/Actions/GoogleDrive/GetGoogleDriveFilesAction.php`: dopo `Assert` su
+  `DriveFilesResource` / `FileList`, ogni `DriveFile` e' mappato a
+  `GoogleDriveFileRow` (`id`/`name`/`mimeType` string obbligatori;
+  `modifiedTime`/`size`/`webViewLink` string|null — size assente su cartelle/Docs).
+  `fields` include `webViewLink` perche' la pagina lo usa gia'.
+- `app/Filament/Pages/GoogleDriveFileListPage.php`: `$files`, `getFilesQuery()` e
+  la closure `Action::url` usano lo stesso shape invece di `mixed`.
+- Blade senza strict types: `resources/views/filament/pages/google-drive-files.blade.php`,
+  `resources/views/index.blade.php`, `resources/views/layouts/master.blade.php`.
 
-- 4 closure Filament (`formatStateUsing`, `Action::url`) — convenzione vendor, stato
-  di provenienza non tipizzabile con certezza.
-- 4 occorrenze legate a `GetGoogleDriveFilesAction` e alla pagina che ne consuma il
-  risultato — il tipo di ritorno reale dipende da `Google\Service\Resource::call()`
-  (libreria `google/apiclient`), che non ha `@return` né return-type: PHPStan vede
-  `mixed` a monte, indipendentemente da cosa scriviamo qui. I controlli difensivi
-  (`is_object`, `method_exists`, `is_array`) già presenti confermano che il codice
-  originale sapeva di non poter contare su un tipo statico.
-- 2 proprietà `@property array<string, mixed>` (`metadata`, `settings` su
-  `CloudStorageFile`) — colonne JSON genuinamente polimorfe, nessun consumer nel
-  modulo ne vincola la forma.
-- 12 occorrenze nelle factory (`definition(): array` con `@return array<string,
-  mixed>` su 6 factory, più `safeMetadata`/`safeSettings` in
-  `CloudStorageUploadFactory`) — il contratto vendor di
-  `Illuminate\Database\Eloquent\Factories\Factory::definition()` è esso stesso
-  documentato `@return array<string, mixed>`; le due funzioni helper sono
-  normalizzatori "accetta qualunque cosa" per design.
+**Lasciato `mixed` (motivato)**:
+- `app/Models/CloudStorageFile.php` (`metadata`, `settings`): JSON polimorfo,
+  nessun consumer nel modulo ne vincola la forma (stesso criterio "Backup/metadata").
+- Factory in `database/factories/`: fuori da `app/`; `definition()` segue il
+  contratto vendor `array<string, mixed>`; `safeMetadata`/`safeSettings` restano
+  normalizzatori "accetta qualunque cosa".
 
-Nessun `@phpstan-ignore` aggiunto, nessuna modifica a `phpstan.neon`, nessun
-allargamento di tipi già più stretti.
+Nessun `@phpstan-ignore`, nessun tocco a `phpstan.neon`, nessun PrivacyPolicyWidget.
 
-**Verifica**:
-- PHPStan (`./vendor/bin/phpstan analyse Modules/CloudStorage --no-progress
-  --error-format=table`): 0 errori prima → 0 errori dopo (nessun codice modificato).
-- PHPMD (`./tools/phpmd.sh Modules/CloudStorage text ../docs/phpmd.ruleset.xml`):
-  eseguito senza crash; findings pre-esistenti, non correlati a `mixed`, non toccati.
-- Pest: non verificabile — `Modules/CloudStorage/phpunit.xml` non esiste e
-  `Modules/CloudStorage/tests/` non contiene test (solo `TestCase.php`/`Pest.php`).
+**Verifica**: PHPStan senza `--level` (livello da `phpstan.neon`) e PHPMD sul modulo.
 
-**Collisioni**: nessuna. `git status --short` sul modulo era pulito all'avvio;
-i file di coordinamento in `docs/chat/cloudstorage-*` risalgono al 20 luglio e
-riguardano un lavoro diverso (rimozione `GoogleDriveService`), già concluso.
-
-**Dettaglio completo**: vedi `docs/coverage.md`, sezione "2026-09-04 — mixed type
-reduction audit".
+**Dettaglio**: [coverage.md](../coverage.md).

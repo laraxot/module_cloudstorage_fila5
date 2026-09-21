@@ -11,7 +11,7 @@ use Modules\Xot\Models\XotBaseModel;
  *
  * Extends XotBaseModel which provides all standard properties and casts.
  *
- * @see \Modules\Xot\Models\XotBaseModel
+ * @see XotBaseModel
  */
 abstract class BaseModel extends XotBaseModel
 {

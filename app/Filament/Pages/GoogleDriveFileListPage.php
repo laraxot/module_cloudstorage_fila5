@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Modules\CloudStorage\Filament\Pages;
 
 use Filament\Actions\Action;
-use Modules\Xot\Filament\Pages\XotBasePage;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\CloudStorage\Actions\GoogleDrive\GetGoogleDriveFilesAction;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
-// implements HasTable
-
+/**
+ * @phpstan-import-type GoogleDriveFileRow from GetGoogleDriveFilesAction
+ */
 class GoogleDriveFileListPage extends XotBasePage
 {
-    // use InteractsWithTable;
     protected string $view = 'cloudstorage::filament.pages.google-drive-file-list';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cloud';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cloud';
 
-    /** @var array<int, mixed> */
+    /** @var list<GoogleDriveFileRow> */
     protected array $files = [];
 
     public function mount(): void
@@ -48,7 +48,11 @@ class GoogleDriveFileListPage extends XotBasePage
                 Action::make('view')
                     ->icon('heroicon-o-eye')
                     ->tooltip(__('View File'))
-                    ->url(fn (mixed $record) => is_array($record) && isset($record['webViewLink']) ? $record['webViewLink'] : '#', true),
+                    ->url(function (array $record): string {
+                        $link = $record['webViewLink'] ?? null;
+
+                        return is_string($link) && $link !== '' ? $link : '#';
+                    }, true),
                 /*
                 Action::make('share')
                     ->icon('heroicon-o-share')
@@ -59,7 +63,7 @@ class GoogleDriveFileListPage extends XotBasePage
     }
 
     /**
-     * @return array<int, mixed>
+     * @return list<GoogleDriveFileRow>
      */
     protected function getFilesQuery(): array
     {

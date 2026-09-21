@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -27,3 +31,4 @@
     {{-- Vite JS --}}
     {{-- {{ module_vite('build-cloudstorage', 'resources/assets/js/app.js') }} --}}
 </body>
+</html>

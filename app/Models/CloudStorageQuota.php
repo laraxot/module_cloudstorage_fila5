@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\CloudStorage\Models;
 
+use Modules\Quaeris\Models\Profile;
+
 /**
  * CloudStorageQuota Model.
  *
  * Represents storage quota limits and usage tracking.
  *
- * @property-read \Modules\Quaeris\Models\Profile|null $creator
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
- * @property-read \Modules\Quaeris\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageQuota newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageQuota newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CloudStorageQuota query()
+ *
  * @mixin \Eloquent
  */
 class CloudStorageQuota extends BaseModel

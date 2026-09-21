@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\CloudStorage\Database\Factories\CloudStorageFileFactory;
+use Modules\Quaeris\Models\Profile;
+use Modules\Quaeris\Models\User;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
@@ -42,23 +44,27 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static CloudStorageFileFactory factory($count = null, $state = [])
  * @method static Builder|CloudStorageFile newModelQuery()
  * @method static Builder|CloudStorageFile newQuery()
  * @method static Builder|CloudStorageFile query()
- * @property-read \Modules\Quaeris\Models\Profile|null $creator
- * @property-read \Modules\Quaeris\Models\Profile|null $deleter
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
  * @property-read string $extension
  * @property-read string $human_readable_size
  * @property-read bool $is_document
  * @property-read bool $is_image
  * @property-read bool $is_video
- * @property-read \Modules\Quaeris\Models\Profile|null $updater
- * @property-read \Modules\Quaeris\Models\User|null $user
+ * @property-read Profile|null $updater
+ * @property-read User|null $user
+ *
  * @method static Builder<static>|CloudStorageFile completed()
  * @method static Builder<static>|CloudStorageFile provider(string $provider)
  * @method static Builder<static>|CloudStorageFile public()
  * @method static Builder<static>|CloudStorageFile status(string $status)
+ *
  * @mixin \Eloquent
  */
 class CloudStorageFile extends BaseModel
@@ -79,6 +85,7 @@ class CloudStorageFile extends BaseModel
     public function user(): BelongsTo
     {
         $userClass = XotData::make()->getUserClass();
+
         return $this->belongsTo($userClass);
     }
 
@@ -125,6 +132,7 @@ class CloudStorageFile extends BaseModel
         for ($i = 0; $bytes > 1024 && $i < count($units) - 1; $i++) {
             $bytes /= 1024;
         }
+
         return round($bytes, 2).' '.$units[$i];
     }
 

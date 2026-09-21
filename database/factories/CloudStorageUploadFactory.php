@@ -123,6 +123,7 @@ class CloudStorageUploadFactory extends Factory
     /**
      * Safely cast metadata to array.
      *
+     * @param  mixed  $metadata  Valore eterogeneo dell'attributo factory (array|string|null atteso).
      * @return array<string, mixed>
      */
     private function safeMetadata(mixed $metadata): array
@@ -136,6 +137,7 @@ class CloudStorageUploadFactory extends Factory
     /**
      * Safely cast settings to array.
      *
+     * @param  mixed  $settings  Valore eterogeneo dell'attributo factory (array|string|null atteso).
      * @return array<string, mixed>
      */
     private function safeSettings(mixed $settings): array

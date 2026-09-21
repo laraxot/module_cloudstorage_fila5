@@ -7,46 +7,74 @@ namespace Modules\CloudStorage\Actions\GoogleDrive;
 use Exception;
 use Google\Client;
 use Google\Service\Drive;
-use Modules\Xot\Datas\XotData;
+use Google\Service\Drive\DriveFile;
+use Google\Service\Drive\FileList;
+use Google\Service\Drive\Resource\Files as DriveFilesResource;
+use Modules\Xot\Contracts\UserContract;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+/**
+ * @phpstan-type GoogleDriveFileRow array{
+ *     id: string,
+ *     name: string,
+ *     mimeType: string,
+ *     modifiedTime: string|null,
+ *     size: string|null,
+ *     webViewLink: string|null
+ * }
+ */
 class GetGoogleDriveFilesAction
 {
     use QueueableAction;
 
     /**
-     * @return array<int, mixed>
+     * @return list<GoogleDriveFileRow>
      */
     public function execute(): array
     {
-        $driveService = new Drive($this->makeClient());
-
-        $filesResource = $driveService->files;
-        if (! is_object($filesResource)) {
-            return [];
-        }
-
-        if (! method_exists($filesResource, 'listFiles')) {
-            return [];
-        }
+        $filesResource = (new Drive($this->makeClient()))->files;
+        Assert::isInstanceOf($filesResource, DriveFilesResource::class);
 
         $result = $filesResource->listFiles([
-            'fields' => 'files(id, name, mimeType, modifiedTime, size)',
+            'fields' => 'files(id, name, mimeType, modifiedTime, size, webViewLink)',
             'q' => "'root' in parents and trashed = false",
         ]);
-
-        if (! is_object($result) || ! method_exists($result, 'getFiles')) {
-            return [];
-        }
+        Assert::isInstanceOf($result, FileList::class);
 
         $filesList = $result->getFiles();
         if (! is_array($filesList)) {
             return [];
         }
 
-        /** @var array<int, mixed> */
-        return $filesList;
+        $files = [];
+        foreach ($filesList as $file) {
+            if (! $file instanceof DriveFile) {
+                continue;
+            }
+
+            $id = $file->getId();
+            $name = $file->getName();
+            $mimeType = $file->getMimeType();
+            Assert::string($id);
+            Assert::string($name);
+            Assert::string($mimeType);
+
+            $modifiedTime = $file->getModifiedTime();
+            $size = $file->getSize();
+            $webViewLink = $file->getWebViewLink();
+
+            $files[] = [
+                'id' => $id,
+                'name' => $name,
+                'mimeType' => $mimeType,
+                'modifiedTime' => is_string($modifiedTime) ? $modifiedTime : null,
+                'size' => is_string($size) ? $size : null,
+                'webViewLink' => is_string($webViewLink) ? $webViewLink : null,
+            ];
+        }
+
+        return $files;
     }
 
     private function makeClient(): Client
@@ -68,8 +96,7 @@ class GetGoogleDriveFilesAction
             throw new Exception('Utente non autenticato');
         }
 
-        $userClass = XotData::make()->getUserClass();
-        Assert::isInstanceOf($user, $userClass);
+        Assert::isInstanceOf($user, UserContract::class);
 
         if (method_exists($user, 'getProviderField')) {
             $token = $user->getProviderField('google', 'token');
