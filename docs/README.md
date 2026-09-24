@@ -43,3 +43,5 @@ Le credenziali OAuth (client id/secret/redirect/scopes) sono lette da `config('s
 - [tasks/tasks-index.md](tasks/tasks-index.md) — indice delle task del modulo.
 - [gdrive/](gdrive/) — riferimenti e tutorial sull'integrazione Google Drive.
 - [wiki/concepts/no-services-no-support-queueable-actions.md](wiki/concepts/no-services-no-support-queueable-actions.md) — perché `app/Services/` è stato sostituito da `app/Actions/`.
+- [coverage.md](coverage.md) — qualità / PHPStan; non aggiungere `symplify/phpstan-rules` in require-dev.
+- [Xot phpstan-status](../../Xot/docs/phpstan-status.md) — gate zero-repo.

@@ -23,13 +23,15 @@
 
 ## 📊 Qualità e Testing
 
-- [coverage.md](./coverage.md) - Report di copertura.
+- [coverage.md](./coverage.md) - Report di copertura; incidente require-dev Symplify (2026-09-24).
 - [git-conflict-resolution-2026-07-31.md](./git-conflict-resolution-2026-07-31.md) - Risoluzione conflitti.
+- [Xot phpstan-status](../../Xot/docs/phpstan-status.md) - gate zero-repo (SSoT).
 
 ## 📦 Pacchetti Composer
 
 - `google/apiclient` - API Google Drive.
 - `spatie/laravel-queueable-action` - Pattern Actions.
+- **Vietato in require-dev:** `symplify/phpstan-rules` — naming Symplify vs religione Laraxot `*Contract` (vedi [coverage.md](./coverage.md)).
 
 ## 🔗 Moduli Correlati
 

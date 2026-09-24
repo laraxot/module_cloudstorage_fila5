@@ -2,13 +2,45 @@
 title: "CloudStorage Module Test Coverage"
 module: "CloudStorage"
 type: concept
-tags: [coverage, phpstan, mixed-type]
+tags: [coverage, phpstan, mixed-type, composer, symplify]
 created: 2026-09-04
-updated: 2026-09-04
+updated: 2026-09-24
 qmd: "coverage"
+related:
+  - ../../Xot/docs/phpstan-status.md
+  - ../../../../bashscripts/ai/wiki/second-brain/phpstan-journey.md
+  - ../../../../bashscripts/ai/wiki/memories/contract-suffix-no-interfaces-folder.md
+  - ./README.md
 ---
 
 # CloudStorage Module Test Coverage
+
+## 2026-09-24 — `symplify/phpstan-rules` in require-dev (zero-gate)
+
+**Perché:** Laraxot non usa le convenzioni Symplify naming (`*Interface`, `Abstract*`,
+`*Trait`). Canon: `*Contract`, `BaseModel`/`XotBase*`/`TestCase`, `Has*` —
+[contract-suffix memory](../../../../bashscripts/ai/wiki/memories/contract-suffix-no-interfaces-folder.md).
+
+**Cosa:** `composer.json` del modulo ha aggiunto in require-dev
+`symplify/phpstan-rules ^14.10`. `phpstan/extension-installer` auto-carica
+`naming-rules.neon` (`symplify.naming=true`) su tutto `Modules/`. Misura fresca
+dopo cache clear: 571 poi 394 `file_errors` su `analyse Modules` (~393 naming;
+~148 `class.notFound` da helper Xot coverage assenti, non da questo modulo).
+`phpstan.neon` root resta immutabile: non spegnere Symplify con ignore/baseline.
+
+**Remediation:** rimuovere `symplify/phpstan-rules` da questo `require-dev`;
+ripristinare gli helper in `Modules/Xot/tests/` se `git D`. Non rinominare il
+codebase verso Symplify.
+
+**Verifica** (cwd `laravel/`):
+
+```bash
+rm -rf /tmp/phpstan && mkdir -p /tmp/phpstan
+php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules --memory-limit=2G
+```
+
+Gate SSoT: [phpstan-status.md](../../Xot/docs/phpstan-status.md) ·
+[phpstan-journey.md](../../../../bashscripts/ai/wiki/second-brain/phpstan-journey.md).
 
 ## 2026-09-04 — `mixed` type reduction audit (BMAD: refactor/quality)
 
