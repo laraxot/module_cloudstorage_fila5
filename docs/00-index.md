@@ -24,7 +24,7 @@
 ## 📊 Qualità e Testing
 
 - [coverage.md](./coverage.md) - Report di copertura; incidente require-dev Symplify (2026-09-24).
-- [git-conflict-resolution-2026-07-31.md](./git-conflict-resolution-2026-07-31.md) - Risoluzione conflitti.
+- [git-conflict-resolution.md](./git-conflict-resolution.md) - Risoluzione conflitti.
 - [Xot phpstan-status](../../Xot/docs/phpstan-status.md) - gate zero-repo (SSoT).
 
 ## 📦 Pacchetti Composer

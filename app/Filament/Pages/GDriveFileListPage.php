@@ -5,17 +5,15 @@ declare(strict_types=1);
 
 namespace Modules\CloudStorage\Filament\Pages;
 
-use Modules\Xot\Filament\Pages\XotBasePage;
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 class GDriveFileListPage extends XotBasePage implements HasTable
 {
     use InteractsWithTable;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cloud';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cloud';
 
     protected static ?string $navigationLabel = 'File di Google Drive';
     /*
