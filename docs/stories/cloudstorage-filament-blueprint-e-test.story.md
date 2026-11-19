@@ -8,7 +8,7 @@ updated: 2026-10-20
 module: CloudStorage
 epic: ../../../Xot/docs/bmad/epic-code-quality-ratchet.md
 depends_on: ["decisione dell'utente: modulo vivo o dormiente (sezione Decisioni aperte)", "verdetto Pest P0 dell'utente (solo per la fase 3)", "guardia DB dentro (solo per la fase 3)"]
-related: [./cloudstorage-mixed-type-reduction.story.md, ./cloudstoragefolderfactory-dead-stub-removed-2026-09-21.story.md, ../bmad/livewire-inventory.md, ../tasks/cloud-storage-integration.md, ../tasks/cloudstorage-filament-v5.md, ../coverage.md, ../../../User/docs/bmad/filament-blueprint.md]
+related: [./cloudstorage-mixed-type-reduction.story.md, ./cloudstoragefolderfactory-dead-stub-removed-.story.md, ../bmad/livewire-inventory.md, ../tasks/cloud-storage-integration.md, ../tasks/cloudstorage-filament-v5.md, ../coverage.md, ../../../User/docs/bmad/filament-blueprint.md]
 tags: [bmad, filament, blueprint, test, google-drive, modulo-dormiente]
 ---
 

@@ -3,6 +3,7 @@ title: "CloudStorageFolderFactory — stub morto rimosso (PHPStan cleanup)"
 status: done
 module: CloudStorage
 data: 2026-09-21
+date_originale_nome_file: 2026-09-21
 ---
 
 # Story: CloudStorageFolderFactory, stub morto rimosso
